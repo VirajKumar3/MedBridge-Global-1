@@ -1,0 +1,160 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { SITE_CONFIG } from "@/lib/site-config";
+import { ArrowDown } from "lucide-react";
+
+export default function HeroSection() {
+  const { eyebrow, headlineLine1, headlineLine2, headlineLine3, description, stats } =
+    SITE_CONFIG.hero;
+
+  return (
+    <section
+      id="hero"
+      className="relative w-full overflow-hidden pt-4 pb-12 md:pb-16"
+    >
+      {/* Outer Framed Hero Canvas */}
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className="relative w-full rounded-[28px] md:rounded-[36px] overflow-hidden min-h-[580px] lg:min-h-[660px] flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-16 border border-white/60 shadow-[0_4px_35px_-8px_rgba(0,0,0,0.04)]"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 80% at 80% 35%, #D9E8E9 0%, #E9E0D8 45%, #E9D6D3 85%, #F5EFEB 100%)",
+          }}
+        >
+          {/* Subtle overlay texture/light reflection */}
+          <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px] pointer-events-none" />
+
+          {/* Realistic Healthcare Professional Center-Right Image */}
+          <div className="absolute bottom-0 right-[8%] sm:right-[14%] lg:right-[18%] xl:right-[20%] w-[290px] sm:w-[380px] md:w-[460px] lg:w-[540px] xl:w-[580px] h-[80%] sm:h-[88%] lg:h-[95%] pointer-events-none select-none z-10">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full h-full"
+            >
+              <Image
+                src="/images/medbridge-hero.webp"
+                alt="Medical professional in white coat reviewing clinical information"
+                fill
+                priority
+                sizes="(max-width: 768px) 300px, (max-width: 1200px) 480px, 580px"
+                className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.12)] mask-gradient"
+                style={{
+                  maskImage:
+                    "linear-gradient(to top, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to top, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)",
+                }}
+              />
+            </motion.div>
+          </div>
+
+          {/* Main Hero Two-Column Layout */}
+          <div className="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left Content Column */}
+            <div className="lg:col-span-8 flex flex-col justify-start max-w-2xl">
+              {/* Eyebrow */}
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-flex items-center gap-2 mb-4 md:mb-6"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-800" />
+                <span className="text-[11px] sm:text-[12px] font-semibold tracking-[0.16em] uppercase text-neutral-800">
+                  {eyebrow}
+                </span>
+              </motion.div>
+
+              {/* Large Uppercase Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 22 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="font-bold tracking-[-0.03em] uppercase leading-[0.93] text-[#080808] text-[46px] sm:text-[60px] md:text-[72px] lg:text-[82px] xl:text-[90px] mb-8"
+              >
+                <span className="block">{headlineLine1}</span>
+                <span className="block">{headlineLine2}</span>
+                <span className="block">{headlineLine3}</span>
+              </motion.h1>
+
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="flex flex-wrap items-center gap-3.5 mb-10"
+              >
+                <Link
+                  href={SITE_CONFIG.hero.primaryCta.href}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#050505] text-white text-[11px] sm:text-[12px] font-semibold tracking-wider uppercase hover:bg-neutral-800 transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
+                >
+                  {SITE_CONFIG.hero.primaryCta.label}
+                </Link>
+                <Link
+                  href={SITE_CONFIG.hero.secondaryCta.href}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/80 hover:bg-white text-[#080808] border border-neutral-300/80 text-[11px] sm:text-[12px] font-semibold tracking-wider uppercase transition-all duration-200 backdrop-blur-sm shadow-sm hover:shadow"
+                >
+                  {SITE_CONFIG.hero.secondaryCta.label}
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right Side Statistics Column (Stacked vertically on Desktop, right-aligned) */}
+            <div className="lg:col-span-4 flex flex-col lg:items-end justify-start pt-2 lg:pt-6">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.35, staggerChildren: 0.1 }}
+                className="grid grid-cols-2 lg:flex lg:flex-col gap-6 sm:gap-8 lg:space-y-6 lg:gap-0 lg:text-right"
+              >
+                {stats.map((stat, idx) => (
+                  <div
+                    key={idx}
+                    className="flex flex-col lg:items-end bg-white/40 lg:bg-transparent p-3 lg:p-0 rounded-2xl backdrop-blur-xs lg:backdrop-blur-none border border-white/50 lg:border-none"
+                  >
+                    <div className="text-[34px] sm:text-[40px] lg:text-[44px] font-light tracking-tight text-[#080808] leading-none">
+                      {stat.value}
+                    </div>
+                    <div className="text-[11px] sm:text-[12px] font-medium tracking-normal text-neutral-700 mt-1">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Hero Bottom Row: Description on Left & Scroll Indicator on Right */}
+          <div className="relative z-20 pt-8 sm:pt-12 mt-auto border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-[13px] sm:text-[14px] text-neutral-800 leading-relaxed max-w-md font-normal"
+            >
+              {description}
+            </motion.p>
+
+            {/* Scroll Indicator button */}
+            <motion.a
+              href="#services"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              aria-label="Scroll to services section"
+              className="hidden sm:inline-flex items-center justify-center w-10 h-10 rounded-full border border-neutral-800/30 text-neutral-800 hover:bg-black/5 hover:border-neutral-800 transition-all focus:outline-none focus:ring-2 focus:ring-black"
+            >
+              <ArrowDown className="w-4 h-4 animate-bounce" />
+            </motion.a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
