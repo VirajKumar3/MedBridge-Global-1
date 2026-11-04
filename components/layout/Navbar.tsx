@@ -1,36 +1,75 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 60) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // check initial position
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header className="w-full pt-4 md:pt-6 px-4 sm:px-6 lg:px-8 z-50">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
+        isScrolled ? "pt-2.5 sm:pt-3" : "pt-4 md:pt-6"
+      } px-4 sm:px-6 lg:px-8`}
+    >
       <div className="max-w-[1400px] mx-auto">
         <nav
           aria-label="Main Navigation"
-          className="relative flex items-center justify-between px-5 py-3 md:px-7 md:py-3.5 rounded-full bg-white/70 backdrop-blur-md border border-white/60 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] transition-all"
+          className={`relative flex items-center justify-between rounded-full bg-white/85 backdrop-blur-md border border-white/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.07)] transition-all duration-300 ease-out ${
+            isScrolled
+              ? "px-4 py-2 md:px-5 md:py-2.5 scale-[0.985]"
+              : "px-5 py-3 md:px-7 md:py-3.5 scale-100"
+          }`}
         >
           {/* Brand Logo & Wordmark */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-full py-1"
+            className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-full py-0.5"
           >
             {/* Subtle connectivity emblem */}
-            <div className="w-7 h-7 rounded-full bg-black flex items-center justify-center text-white text-[11px] font-semibold tracking-tighter">
+            <div
+              className={`rounded-full bg-black flex items-center justify-center text-white font-semibold tracking-tighter transition-all duration-300 ${
+                isScrolled ? "w-6 h-6 text-[10px]" : "w-7 h-7 text-[11px]"
+              }`}
+            >
               <span className="inline-block transform scale-90">MB</span>
             </div>
-            <span className="font-semibold text-[15px] sm:text-[16px] tracking-tight text-[#080808]">
+            <span
+              className={`font-semibold tracking-tight text-[#080808] transition-all duration-300 ${
+                isScrolled ? "text-[14px] sm:text-[15px]" : "text-[15px] sm:text-[16px]"
+              }`}
+            >
               {SITE_CONFIG.name}
             </span>
           </Link>
 
           {/* Desktop Center Links */}
-          <ul className="hidden md:flex items-center space-x-7 text-[13px] font-medium text-[#444444]">
+          <ul
+            className={`hidden md:flex items-center text-medium text-[#444444] transition-all duration-300 ${
+              isScrolled ? "space-x-5 text-[12px]" : "space-x-7 text-[13px]"
+            }`}
+          >
             {SITE_CONFIG.navLinks.map((item) => (
               <li key={item.label}>
                 <Link
@@ -47,7 +86,11 @@ export default function Navbar() {
           <div className="hidden md:flex items-center">
             <Link
               href="#appointment"
-              className="inline-flex items-center justify-center text-[11px] font-medium tracking-wider uppercase px-5 py-2.5 rounded-full bg-[#050505] text-white hover:bg-neutral-800 transition-all duration-200 shadow-sm hover:shadow active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-black"
+              className={`inline-flex items-center justify-center font-medium tracking-wider uppercase rounded-full bg-[#050505] text-white hover:bg-neutral-800 transition-all duration-300 shadow-sm hover:shadow active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-black ${
+                isScrolled
+                  ? "text-[10px] px-4 py-2"
+                  : "text-[11px] px-5 py-2.5"
+              }`}
             >
               BOOK APPOINTMENT
             </Link>
@@ -57,7 +100,9 @@ export default function Navbar() {
           <div className="flex md:hidden items-center gap-2">
             <Link
               href="#appointment"
-              className="inline-flex items-center justify-center text-[10px] font-medium tracking-wider uppercase px-3 py-1.5 rounded-full bg-[#050505] text-white"
+              className={`inline-flex items-center justify-center font-medium tracking-wider uppercase rounded-full bg-[#050505] text-white transition-all duration-300 ${
+                isScrolled ? "text-[9px] px-2.5 py-1.5" : "text-[10px] px-3 py-1.5"
+              }`}
             >
               BOOK
             </Link>
@@ -105,4 +150,3 @@ export default function Navbar() {
     </header>
   );
 }
-

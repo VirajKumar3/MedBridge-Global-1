@@ -14,7 +14,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden pt-4 pb-12 md:pb-16"
+      className="relative w-full overflow-hidden pt-20 sm:pt-24 md:pt-28 pb-12 md:pb-16"
     >
       {/* Outer Framed Hero Canvas */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,8 +28,8 @@ export default function HeroSection() {
           {/* Subtle overlay texture/light reflection */}
           <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px] pointer-events-none" />
 
-          {/* Realistic Healthcare Professional Center-Right Image */}
-          <div className="absolute bottom-0 right-[8%] sm:right-[14%] lg:right-[18%] xl:right-[20%] w-[290px] sm:w-[380px] md:w-[460px] lg:w-[540px] xl:w-[580px] h-[80%] sm:h-[88%] lg:h-[95%] pointer-events-none select-none z-10">
+          {/* Realistic Healthcare Professional Center-Right Image: Female Doctor */}
+          <div className="absolute bottom-0 right-[6%] sm:right-[12%] lg:right-[16%] xl:right-[18%] w-[290px] sm:w-[380px] md:w-[460px] lg:w-[540px] xl:w-[580px] h-[82%] sm:h-[90%] lg:h-[96%] pointer-events-none select-none z-10">
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -37,8 +37,8 @@ export default function HeroSection() {
               className="relative w-full h-full"
             >
               <Image
-                src="/images/medbridge-hero.webp"
-                alt="Medical professional in white coat reviewing clinical information"
+                src="/images/medbridge-hero-female.webp"
+                alt="Female doctor in a white coat in a modern healthcare setting"
                 fill
                 priority
                 sizes="(max-width: 768px) 300px, (max-width: 1200px) 480px, 580px"
