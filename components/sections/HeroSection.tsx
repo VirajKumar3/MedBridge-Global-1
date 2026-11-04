@@ -28,8 +28,8 @@ export default function HeroSection() {
           {/* Subtle overlay texture/light reflection */}
           <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px] pointer-events-none" />
 
-          {/* Realistic Healthcare Professional Center-Right Image: Female Doctor */}
-          <div className="absolute bottom-0 right-[6%] sm:right-[12%] lg:right-[16%] xl:right-[18%] w-[290px] sm:w-[380px] md:w-[460px] lg:w-[540px] xl:w-[580px] h-[82%] sm:h-[90%] lg:h-[96%] pointer-events-none select-none z-10">
+          {/* Realistic Healthcare Professional Center-Right Image: Doctor matching the design reference */}
+          <div className="absolute bottom-0 right-[4%] sm:right-[8%] lg:right-[12%] xl:right-[15%] w-[320px] sm:w-[420px] md:w-[490px] lg:w-[560px] xl:w-[620px] h-[85%] sm:h-[92%] lg:h-[98%] pointer-events-none select-none z-10">
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -38,17 +38,11 @@ export default function HeroSection() {
             >
               <Image
                 src="/images/medbridge-hero-female.webp"
-                alt="Female doctor in a white coat in a modern healthcare setting"
+                alt="Medical physician examining diagnostic sample in clinical healthcare setting"
                 fill
                 priority
-                sizes="(max-width: 768px) 300px, (max-width: 1200px) 480px, 580px"
-                className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.12)] mask-gradient"
-                style={{
-                  maskImage:
-                    "linear-gradient(to top, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)",
-                  WebkitMaskImage:
-                    "linear-gradient(to top, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)",
-                }}
+                sizes="(max-width: 768px) 320px, (max-width: 1200px) 500px, 620px"
+                className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.12)]"
               />
             </motion.div>
           </div>
