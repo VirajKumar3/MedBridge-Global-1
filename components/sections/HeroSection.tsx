@@ -35,6 +35,12 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-full h-full"
+              style={{
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 85% 85% at 50% 55%, black 50%, transparent 98%)",
+                maskImage:
+                  "radial-gradient(ellipse 85% 85% at 50% 55%, black 50%, transparent 98%)",
+              }}
             >
               <Image
                 src="/images/medbridge-female-doctor-hero.webp"
@@ -44,7 +50,7 @@ export default function HeroSection() {
                 quality={100}
                 unoptimized
                 sizes="(max-width: 768px) 320px, (max-width: 1200px) 450px, 520px"
-                className="object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.06)]"
+                className="object-contain object-bottom"
               />
             </motion.div>
           </div>
