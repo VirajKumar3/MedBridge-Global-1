@@ -22,27 +22,27 @@ export default function HeroSection() {
           className="relative w-full rounded-[28px] md:rounded-[36px] overflow-hidden min-h-[580px] lg:min-h-[660px] flex flex-col justify-between p-6 sm:p-10 md:p-12 lg:p-16 border border-white/60 shadow-[0_4px_35px_-8px_rgba(0,0,0,0.04)]"
           style={{
             background:
-              "radial-gradient(ellipse 90% 80% at 80% 35%, #D9E8E9 0%, #E9E0D8 45%, #E9D6D3 85%, #F5EFEB 100%)",
+              "radial-gradient(ellipse 95% 85% at 75% 35%, #E5ECEB 0%, #EFE8E2 40%, #F1E5E2 75%, #F7F3F0 100%)",
           }}
         >
           {/* Subtle overlay texture/light reflection */}
           <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px] pointer-events-none" />
 
-          {/* Realistic Healthcare Professional Center-Right Image: Doctor matching the design reference */}
-          <div className="absolute bottom-0 right-[4%] sm:right-[8%] lg:right-[12%] xl:right-[15%] w-[320px] sm:w-[420px] md:w-[490px] lg:w-[560px] xl:w-[620px] h-[85%] sm:h-[92%] lg:h-[98%] pointer-events-none select-none z-10">
+          {/* Blonde Female Doctor Seated Hero Photograph in Center-Right */}
+          <div className="absolute bottom-0 right-[10%] sm:right-[15%] md:right-[18%] lg:right-[22%] xl:right-[24%] w-[310px] sm:w-[380px] md:w-[440px] lg:w-[480px] xl:w-[500px] h-[85%] sm:h-[90%] lg:h-[96%] pointer-events-none select-none z-10">
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 30 }}
+              initial={{ opacity: 0, scale: 0.97, y: 25 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-full h-full"
             >
               <Image
-                src="/images/medbridge-hero-female.webp"
-                alt="Medical physician examining diagnostic sample in clinical healthcare setting"
+                src="/images/medbridge-female-doctor-hero.webp"
+                alt="Blonde female doctor in a white coat with stethoscope in a modern healthcare setting"
                 fill
                 priority
-                sizes="(max-width: 768px) 320px, (max-width: 1200px) 500px, 620px"
-                className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.12)]"
+                sizes="(max-width: 768px) 310px, (max-width: 1200px) 440px, 500px"
+                className="object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.08)]"
               />
             </motion.div>
           </div>
@@ -151,4 +151,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
