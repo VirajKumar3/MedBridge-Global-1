@@ -29,9 +29,9 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px] pointer-events-none" />
 
           {/* Blonde Female Doctor Seated Hero Photograph in Center-Right */}
-          <div className="absolute bottom-0 right-[10%] sm:right-[15%] md:right-[18%] lg:right-[22%] xl:right-[24%] w-[310px] sm:w-[380px] md:w-[440px] lg:w-[480px] xl:w-[500px] h-[85%] sm:h-[90%] lg:h-[96%] pointer-events-none select-none z-10">
+          <div className="absolute bottom-0 right-[8%] sm:right-[12%] md:right-[15%] lg:right-[18%] xl:right-[20%] w-[320px] sm:w-[390px] md:w-[450px] lg:w-[490px] xl:w-[520px] h-[85%] sm:h-[90%] lg:h-[96%] pointer-events-none select-none z-10">
             <motion.div
-              initial={{ opacity: 0, scale: 0.97, y: 25 }}
+              initial={{ opacity: 0, scale: 0.98, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-full h-full"
@@ -41,8 +41,10 @@ export default function HeroSection() {
                 alt="Blonde female doctor in a white coat with stethoscope in a modern healthcare setting"
                 fill
                 priority
-                sizes="(max-width: 768px) 310px, (max-width: 1200px) 440px, 500px"
-                className="object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.08)]"
+                quality={100}
+                unoptimized
+                sizes="(max-width: 768px) 320px, (max-width: 1200px) 450px, 520px"
+                className="object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.06)]"
               />
             </motion.div>
           </div>
@@ -50,7 +52,7 @@ export default function HeroSection() {
           {/* Main Hero Two-Column Layout */}
           <div className="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Content Column */}
-            <div className="lg:col-span-8 flex flex-col justify-start max-w-2xl">
+            <div className="lg:col-span-7 flex flex-col justify-start max-w-xl">
               {/* Eyebrow */}
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
@@ -64,12 +66,12 @@ export default function HeroSection() {
                 </span>
               </motion.div>
 
-              {/* Large Uppercase Headline */}
+              {/* Large Crisp Uppercase Headline without background interference */}
               <motion.h1
                 initial={{ opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="font-bold tracking-[-0.03em] uppercase leading-[0.93] text-[#080808] text-[46px] sm:text-[60px] md:text-[72px] lg:text-[82px] xl:text-[90px] mb-8"
+                className="font-bold tracking-[-0.035em] uppercase leading-[0.93] text-[#080808] text-[44px] sm:text-[56px] md:text-[66px] lg:text-[74px] xl:text-[80px] mb-8"
               >
                 <span className="block">{headlineLine1}</span>
                 <span className="block">{headlineLine2}</span>
@@ -91,7 +93,7 @@ export default function HeroSection() {
                 </Link>
                 <Link
                   href={SITE_CONFIG.hero.secondaryCta.href}
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/80 hover:bg-white text-[#080808] border border-neutral-300/80 text-[11px] sm:text-[12px] font-semibold tracking-wider uppercase transition-all duration-200 backdrop-blur-sm shadow-sm hover:shadow"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white/90 hover:bg-white text-[#080808] border border-neutral-300/80 text-[11px] sm:text-[12px] font-semibold tracking-wider uppercase transition-all duration-200 backdrop-blur-sm shadow-sm hover:shadow"
                 >
                   {SITE_CONFIG.hero.secondaryCta.label}
                 </Link>
@@ -99,7 +101,7 @@ export default function HeroSection() {
             </div>
 
             {/* Right Side Statistics Column (Stacked vertically on Desktop, right-aligned) */}
-            <div className="lg:col-span-4 flex flex-col lg:items-end justify-start pt-2 lg:pt-6">
+            <div className="lg:col-span-5 flex flex-col lg:items-end justify-start pt-2 lg:pt-6">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
