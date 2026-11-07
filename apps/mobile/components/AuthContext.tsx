@@ -1,6 +1,20 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { AuthenticatedUser } from "@medbridge/types";
-import { authApi, setAuthToken } from "@medbridge/api";
+import { authApi, setAuthToken, setBaseUrl } from "@medbridge/api";
+import Constants from "expo-constants";
+
+// Auto-detect backend host if running in Expo on a real device or simulator
+try {
+  const hostUri = Constants.expoConfig?.hostUri;
+  if (hostUri) {
+    const host = hostUri.split(":")[0];
+    if (host && host !== "localhost" && host !== "127.0.0.1") {
+      setBaseUrl(`http://${host}:5001`);
+    }
+  }
+} catch {
+  // Use default
+}
 
 interface AuthContextType {
   user: AuthenticatedUser | null;
