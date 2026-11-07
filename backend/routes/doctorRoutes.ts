@@ -8,3 +8,4 @@ router.get("/specialties", doctorController.getSpecialties);
 router.get("/:id", doctorController.getById);
 
 export default router;
+

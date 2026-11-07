@@ -344,3 +344,4 @@ export const authController = {
     res.json({ success: true, message: "Logged out successfully" });
   },
 };
+

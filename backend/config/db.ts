@@ -14,3 +14,4 @@ export async function connectDB(): Promise<typeof mongoose> {
     return mongoose;
   }
 }
+

@@ -66,3 +66,4 @@ export const API_ENDPOINTS = {
   DOCTOR_VERIFICATION: "/api/doctor/verification-status",
   CHAT: "/api/chat",
 } as const;
+

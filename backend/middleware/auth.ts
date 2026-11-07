@@ -52,3 +52,4 @@ export function requireRole(role: "patient" | "doctor" | "PATIENT" | "DOCTOR") {
     next();
   };
 }
+

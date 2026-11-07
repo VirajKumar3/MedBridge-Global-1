@@ -6,7 +6,7 @@ import { Appointment } from "../models";
 import { appointmentBookingSchema } from "@medbridge/validation";
 import { AppointmentRecord } from "@medbridge/types";
 
-const dataFilePath = path.join(process.cwd(), "apps", "web", "data", "appointments.json");
+const dataFilePath = path.resolve(__dirname, "../../apps/web/data/appointments.json");
 
 function readAppointmentsFromFile(): AppointmentRecord[] {
   try {
@@ -50,7 +50,14 @@ export const appointmentController = {
   },
 
   getAll: (req: AuthenticatedRequest, res: Response): void => {
-    const { email, doctorId, id } = req.query;
+    const { date, email, doctorId, id } = req.query;
+
+    // Support slot availability lookup when ?date= is provided
+    if (date && typeof date === "string") {
+      appointmentController.getSlots(req, res);
+      return;
+    }
+
     const all = readAppointmentsFromFile();
 
     if (id && typeof id === "string") {
@@ -161,8 +168,12 @@ export const appointmentController = {
   },
 
   cancel: (req: AuthenticatedRequest, res: Response): void => {
-    const { id } = req.params;
-    const { reason } = req.body;
+    const id = req.params.id || req.body?.id;
+    const reason = req.body?.reason;
+    if (!id) {
+      res.status(400).json({ success: false, error: "Appointment ID is required" });
+      return;
+    }
     const all = readAppointmentsFromFile();
 
     const idx = all.findIndex((a) => a.id.toUpperCase() === id.toUpperCase());
@@ -177,3 +188,4 @@ export const appointmentController = {
     res.json({ success: true, message: "Appointment cancelled successfully", appointment: all[idx] });
   },
 };
+

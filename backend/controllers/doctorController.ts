@@ -40,3 +40,4 @@ export const doctorController = {
     res.json({ success: true, specialties: Object.values(SPECIALTIES_DATA) });
   },
 };
+

@@ -17,3 +17,4 @@ export function getApiBaseUrl(customUrl?: string): string {
   }
   return ENV_CONFIG.DEFAULT_API_URL;
 }
+
