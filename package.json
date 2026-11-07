@@ -1,12 +1,23 @@
 {
-  "name": "medbridge-app",
-  "version": "0.1.0",
+  "name": "medbridge-global",
+  "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "backend"
+  ],
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
-    "start": "next start",
-    "lint": "eslint"
+    "web": "npm run dev --workspace=@medbridge/web",
+    "web:build": "npm run build --workspace=@medbridge/web",
+    "build": "npm run build --workspace=@medbridge/web",
+    "mobile": "npm run dev --workspace=@medbridge/mobile",
+    "mobile:ios": "npm run ios --workspace=@medbridge/mobile",
+    "mobile:android": "npm run android --workspace=@medbridge/mobile",
+    "backend": "npm run dev --workspace=@medbridge/backend",
+    "backend:start": "npm run start --workspace=@medbridge/backend",
+    "dev": "npm run dev --workspace=@medbridge/web",
+    "lint": "npm run lint --workspace=@medbridge/web"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
@@ -23,7 +34,6 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.5",
-    "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

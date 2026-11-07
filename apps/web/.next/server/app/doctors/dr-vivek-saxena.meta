@@ -1,0 +1,40 @@
+{
+  "status": 200,
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/doctors/layout,_N_T_/doctors/[id]/layout,_N_T_/doctors/[id]/page,_N_T_/doctors/dr-vivek-saxena"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/doctors/$d$id/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49248,
+        "slots": {
+          "children": {
+            "hints": 49248,
+            "slots": {
+              "children": {
+                "hints": 49312,
+                "slots": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/3adbc6741397847e7330fdd73fb05c57810810ce9b33038cc08f3712aee34991/$/doctors/dr-vivek-saxena",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/doctors/[id]/page"
+    },
+    "isFallback": false
+  }
+}

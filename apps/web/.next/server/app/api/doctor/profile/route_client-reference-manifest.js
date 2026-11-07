@@ -1,0 +1,1 @@
+globalThis.__RSC_MANIFEST=(globalThis.__RSC_MANIFEST||{});globalThis.__RSC_MANIFEST["/api/doctor/profile/route"]={"moduleLoading":{"prefix":"/_next/"},"ssrModuleMapping":{},"edgeSSRModuleMapping":{},"clientModules":{},"entryCSSFiles":{"/Users/virajkumar/MedBridge-Global-1/apps/web/app/api/doctor/profile/route":[]},"rscModuleMapping":{},"edgeRscModuleMapping":{}};
