@@ -39,7 +39,7 @@ export default function RegisterDoctorScreen() {
     setLoading(false);
 
     if (res.success) {
-      router.replace("/(doctor)");
+      router.replace("/doctor/queue");
     } else {
       setErrorMsg(res.error || "Doctor registration failed.");
     }

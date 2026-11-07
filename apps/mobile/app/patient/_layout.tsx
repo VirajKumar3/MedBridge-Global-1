@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs } from "expo-router";
-import { Text, Platform, StyleSheet } from "react-native";
+import { Text, Platform } from "react-native";
 import { BRAND_COLORS } from "@medbridge/constants";
 
 function TabIcon({ symbol, focused }: { symbol: string; focused: boolean }) {
@@ -33,28 +33,28 @@ export default function PatientLayout() {
       }}
     >
       <Tabs.Screen
-        name="(tabs)/index"
+        name="home"
         options={{
           title: "Home",
           tabBarIcon: ({ focused }) => <TabIcon symbol="⌂" focused={focused} />,
         }}
       />
       <Tabs.Screen
-        name="(tabs)/doctors"
+        name="doctors"
         options={{
           title: "Doctors",
           tabBarIcon: ({ focused }) => <TabIcon symbol="⚕" focused={focused} />,
         }}
       />
       <Tabs.Screen
-        name="(tabs)/appointments"
+        name="appointments"
         options={{
           title: "Bookings",
           tabBarIcon: ({ focused }) => <TabIcon symbol="▦" focused={focused} />,
         }}
       />
       <Tabs.Screen
-        name="(tabs)/profile"
+        name="profile"
         options={{
           title: "Profile",
           tabBarIcon: ({ focused }) => <TabIcon symbol="●" focused={focused} />,

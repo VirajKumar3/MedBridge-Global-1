@@ -111,7 +111,7 @@ export default function DoctorsScreen() {
             <TouchableOpacity
               style={styles.card}
               activeOpacity={0.88}
-              onPress={() => router.push(`/doctor/${item.id}`)}
+              onPress={() => router.push(`/doctor-detail/${item.id}`)}
             >
               <View style={styles.cardHeader}>
                 <View style={styles.avatar}>
@@ -148,7 +148,7 @@ export default function DoctorsScreen() {
 
                 <TouchableOpacity
                   style={styles.bookBtn}
-                  onPress={() => router.push(`/doctor/${item.id}`)}
+                  onPress={() => router.push(`/doctor-detail/${item.id}`)}
                 >
                   <Text style={styles.bookBtnText}>Book Visit →</Text>
                 </TouchableOpacity>

@@ -28,9 +28,9 @@ export default function LoginScreen() {
 
     if (res.success) {
       if (role === "doctor") {
-        router.replace("/(doctor)");
+        router.replace("/doctor/queue");
       } else {
-        router.replace("/(patient)");
+        router.replace("/patient/home");
       }
     } else {
       setErrorMsg(res.error || "Authentication failed. Check your credentials.");

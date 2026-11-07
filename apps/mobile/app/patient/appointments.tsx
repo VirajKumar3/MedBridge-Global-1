@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator, Alert, RefreshControl } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useAuth } from "../../../components/AuthContext";
+import { useAuth } from "../../components/AuthContext";
 import { BRAND_COLORS } from "@medbridge/constants";
 import { appointmentApi } from "@medbridge/api";
 import { AppointmentRecord } from "@medbridge/types";

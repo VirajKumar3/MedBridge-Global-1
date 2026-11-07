@@ -12,10 +12,10 @@ export default function RootLayout() {
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
           <Stack.Screen name="(auth)" options={{ animation: "fade" }} />
-          <Stack.Screen name="(patient)" options={{ animation: "slide_from_right" }} />
-          <Stack.Screen name="(doctor)" options={{ animation: "slide_from_right" }} />
+          <Stack.Screen name="patient" options={{ animation: "slide_from_right" }} />
+          <Stack.Screen name="doctor" options={{ animation: "slide_from_right" }} />
           <Stack.Screen
-            name="doctor/[id]"
+            name="doctor-detail/[id]"
             options={{
               headerShown: true,
               headerTitle: "Doctor Profile",
@@ -29,4 +29,3 @@ export default function RootLayout() {
     </SafeAreaProvider>
   );
 }
-

@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from "react-native";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useAuth } from "../../../components/AuthContext";
+import { useAuth } from "../../components/AuthContext";
 import { BRAND_COLORS } from "@medbridge/constants";
 
 export default function PatientProfileScreen() {
@@ -59,11 +59,11 @@ export default function PatientProfileScreen() {
 
         {/* Options List */}
         <View style={styles.menuCard}>
-          <TouchableOpacity style={styles.menuItem} onPress={() => router.push("/(patient)/(tabs)/appointments")}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => router.push("/patient/appointments")}>
             <Text style={styles.menuItemText}>My Consultations & Passes</Text>
             <Text style={styles.menuArrow}>›</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem} onPress={() => router.push("/(patient)/(tabs)/doctors")}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => router.push("/patient/doctors")}>
             <Text style={styles.menuItemText}>Find & Schedule Specialists</Text>
             <Text style={styles.menuArrow}>›</Text>
           </TouchableOpacity>

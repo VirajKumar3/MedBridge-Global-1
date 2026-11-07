@@ -33,7 +33,7 @@ export default function RegisterPatientScreen() {
     setLoading(false);
 
     if (res.success) {
-      router.replace("/(patient)");
+      router.replace("/patient/home");
     } else {
       setErrorMsg(res.error || "Registration failed. Please check inputs.");
     }

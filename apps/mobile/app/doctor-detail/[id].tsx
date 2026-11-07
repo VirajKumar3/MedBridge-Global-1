@@ -184,7 +184,7 @@ export default function DoctorDetailScreen() {
 
             <TouchableOpacity
               style={styles.doneBtn}
-              onPress={() => router.replace("/(patient)/(tabs)/appointments")}
+              onPress={() => router.replace("/patient/appointments")}
             >
               <Text style={styles.doneBtnText}>View in My Appointments</Text>
             </TouchableOpacity>

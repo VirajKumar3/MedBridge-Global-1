@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, FlatList, Platform } from "react-native";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useAuth } from "../../../components/AuthContext";
+import { useAuth } from "../../components/AuthContext";
 import { BRAND_COLORS, SPECIALTIES_LIST } from "@medbridge/constants";
 import { doctorApi, appointmentApi } from "@medbridge/api";
 import { Doctor, AppointmentRecord } from "@medbridge/types";
@@ -79,7 +79,7 @@ export default function PatientHomeScreen() {
 
             <TouchableOpacity
               style={styles.viewPassBtn}
-              onPress={() => router.push("/(patient)/(tabs)/appointments")}
+              onPress={() => router.push("/patient/appointments")}
               activeOpacity={0.85}
             >
               <Text style={styles.viewPassBtnText}>View Clinical Pass →</Text>
@@ -94,7 +94,7 @@ export default function PatientHomeScreen() {
             </View>
             <TouchableOpacity
               style={styles.promoBtn}
-              onPress={() => router.push("/(patient)/(tabs)/doctors")}
+              onPress={() => router.push("/patient/doctors")}
             >
               <Text style={styles.promoBtnText}>Book Now</Text>
             </TouchableOpacity>
@@ -104,7 +104,7 @@ export default function PatientHomeScreen() {
         {/* Specialties Horizontal Carousel */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Medical Specialties</Text>
-          <TouchableOpacity onPress={() => router.push("/(patient)/(tabs)/doctors")}>
+          <TouchableOpacity onPress={() => router.push("/patient/doctors")}>
             <Text style={styles.seeAllText}>See all</Text>
           </TouchableOpacity>
         </View>
@@ -114,7 +114,7 @@ export default function PatientHomeScreen() {
             <TouchableOpacity
               key={spec.id}
               style={styles.specialtyChip}
-              onPress={() => router.push({ pathname: "/(patient)/(tabs)/doctors", params: { specialty: spec.id } })}
+              onPress={() => router.push({ pathname: "/patient/doctors", params: { specialty: spec.id } })}
               activeOpacity={0.8}
             >
               <View style={styles.specialtyIconBox}>
@@ -128,7 +128,7 @@ export default function PatientHomeScreen() {
         {/* Featured Specialists */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Featured Specialists</Text>
-          <TouchableOpacity onPress={() => router.push("/(patient)/(tabs)/doctors")}>
+          <TouchableOpacity onPress={() => router.push("/patient/doctors")}>
             <Text style={styles.seeAllText}>Browse all ({doctors.length})</Text>
           </TouchableOpacity>
         </View>
@@ -139,7 +139,7 @@ export default function PatientHomeScreen() {
               key={doc.id}
               style={styles.doctorCard}
               activeOpacity={0.85}
-              onPress={() => router.push(`/doctor/${doc.id}`)}
+              onPress={() => router.push(`/doctor-detail/${doc.id}`)}
             >
               <View style={styles.doctorCardTop}>
                 <View style={styles.doctorAvatarBox}>

@@ -33,21 +33,21 @@ export default function DoctorLayout() {
       }}
     >
       <Tabs.Screen
-        name="(tabs)/index"
+        name="queue"
         options={{
           title: "Queue",
           tabBarIcon: ({ focused }) => <TabIcon symbol="📋" focused={focused} />,
         }}
       />
       <Tabs.Screen
-        name="(tabs)/schedule"
+        name="schedule"
         options={{
           title: "Schedule",
           tabBarIcon: ({ focused }) => <TabIcon symbol="📅" focused={focused} />,
         }}
       />
       <Tabs.Screen
-        name="(tabs)/profile"
+        name="profile"
         options={{
           title: "Profile",
           tabBarIcon: ({ focused }) => <TabIcon symbol="⚕" focused={focused} />,
