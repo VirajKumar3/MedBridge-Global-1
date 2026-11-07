@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { BookingProvider } from "@/components/booking/BookingContext";
+import { AuthProvider } from "@/components/auth/AuthContext";
+import AuthModal from "@/components/auth/AuthModal";
+import ChatbotWidget from "@/components/chatbot/ChatbotWidget";
 
 export const metadata: Metadata = {
   title: "MedBridge Global | Connected Healthcare",
@@ -14,7 +18,11 @@ export const metadata: Metadata = {
     siteName: "MedBridge Global",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
   },
 };
 
@@ -26,7 +34,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col font-sans bg-white text-[#080808]">
-        {children}
+        <AuthProvider>
+          <BookingProvider>
+            {children}
+            <AuthModal />
+            <ChatbotWidget />
+          </BookingProvider>
+        </AuthProvider>
       </body>
     </html>
   );

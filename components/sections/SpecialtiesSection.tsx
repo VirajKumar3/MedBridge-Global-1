@@ -15,6 +15,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { useBooking } from "@/components/booking/BookingContext";
 
 // Map icon name string to Lucide component
 const iconMap: Record<string, LucideIcon> = {
@@ -29,6 +30,8 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export default function SpecialtiesSection() {
+  const { openBooking } = useBooking();
+
   return (
     <section id="specialties" className="w-full py-16 md:py-24 bg-white border-t border-neutral-100">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,14 +48,15 @@ export default function SpecialtiesSection() {
 
           {/* Action buttons on the right */}
           <div className="flex items-center gap-3">
-            <Link
-              href="#appointment"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#050505] text-white text-[11px] font-semibold tracking-wider uppercase hover:bg-neutral-800 transition-all duration-200 shadow-sm"
+            <button
+              type="button"
+              onClick={() => openBooking()}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#050505] text-white text-[11px] font-semibold tracking-wider uppercase hover:bg-neutral-800 transition-all duration-200 shadow-sm cursor-pointer"
             >
               BOOK APPOINTMENT
-            </Link>
+            </button>
             <Link
-              href="#appointment"
+              href="/doctors"
               className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-[#080808] border border-neutral-300 text-[11px] font-semibold tracking-wider uppercase hover:bg-neutral-50 transition-all duration-200"
             >
               FIND A DOCTOR

@@ -28,8 +28,25 @@ export default function HeroSection() {
           {/* Subtle overlay texture/light reflection */}
           <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px] pointer-events-none" />
 
+          {/* Soft ambient backlight behind doctor matching warm beige & blush palette */}
+          <div
+            className="absolute bottom-[-10%] right-[-2%] sm:right-[2%] md:right-[6%] lg:right-[10%] xl:right-[12%] w-[380px] sm:w-[460px] md:w-[520px] lg:w-[580px] xl:w-[620px] h-[88%] rounded-full pointer-events-none z-0 opacity-75 blur-3xl"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(241, 229, 226, 0.75) 0%, rgba(239, 232, 226, 0.6) 45%, rgba(229, 236, 235, 0.3) 70%, transparent 85%)",
+            }}
+          />
+
           {/* Blonde Female Doctor Seated Hero Photograph in Center-Right */}
-          <div className="absolute bottom-0 right-[8%] sm:right-[12%] md:right-[15%] lg:right-[18%] xl:right-[20%] w-[320px] sm:w-[390px] md:w-[450px] lg:w-[490px] xl:w-[520px] h-[85%] sm:h-[90%] lg:h-[96%] pointer-events-none select-none z-10">
+          <div
+            className="absolute bottom-0 right-[1%] sm:right-[4%] md:right-[8%] lg:right-[12%] xl:right-[15%] w-[310px] sm:w-[390px] md:w-[460px] lg:w-[510px] xl:w-[560px] h-[82%] sm:h-[88%] md:h-[92%] lg:h-[95%] xl:h-[96%] pointer-events-none select-none z-10"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to top, transparent 0%, black 12%, black 100%)",
+              maskImage:
+                "linear-gradient(to top, transparent 0%, black 12%, black 100%)",
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.98, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -37,19 +54,19 @@ export default function HeroSection() {
               className="relative w-full h-full"
               style={{
                 WebkitMaskImage:
-                  "radial-gradient(ellipse 85% 85% at 50% 55%, black 50%, transparent 98%)",
+                  "radial-gradient(ellipse 94% 92% at 50% 50%, black 72%, transparent 100%)",
                 maskImage:
-                  "radial-gradient(ellipse 85% 85% at 50% 55%, black 50%, transparent 98%)",
+                  "radial-gradient(ellipse 94% 92% at 50% 50%, black 72%, transparent 100%)",
               }}
             >
               <Image
-                src="/images/medbridge-female-doctor-hero.webp"
-                alt="Blonde female doctor in a white coat with stethoscope in a modern healthcare setting"
+                src="/images/Smiling Blonde Doctor Portrait.png"
+                alt="Smiling blonde female doctor in a white coat with stethoscope in a modern healthcare setting"
                 fill
                 priority
                 quality={100}
                 unoptimized
-                sizes="(max-width: 768px) 320px, (max-width: 1200px) 450px, 520px"
+                sizes="(max-width: 640px) 310px, (max-width: 768px) 390px, (max-width: 1024px) 460px, (max-width: 1280px) 510px, 560px"
                 className="object-contain object-bottom"
               />
             </motion.div>
@@ -132,7 +149,7 @@ export default function HeroSection() {
           </div>
 
           {/* Hero Bottom Row: Description on Left & Scroll Indicator on Right */}
-          <div className="relative z-20 pt-8 sm:pt-12 mt-auto border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+          <div className="relative z-20 pt-8 sm:pt-12 mt-auto flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}

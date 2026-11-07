@@ -6,6 +6,7 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import SpecialtiesSection from "@/components/sections/SpecialtiesSection";
 import BenefitsSection from "@/components/sections/BenefitsSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
+import HealthcareGallery from "@/components/common/HealthcareGallery";
 import AppointmentCTASection from "@/components/sections/AppointmentCTASection";
 
 export default function Home() {
@@ -28,6 +29,9 @@ export default function Home() {
 
       {/* Coordinated Care Continuum - How It Works */}
       <HowItWorksSection />
+
+      {/* Editorial Healthcare Photography Gallery */}
+      <HealthcareGallery />
 
       {/* Appointment CTA Form & Consultation Intake */}
       <AppointmentCTASection />

@@ -33,6 +33,8 @@ export interface BenefitItem {
   title: string;
   description: string;
   badge: string;
+  image: string;
+  alt: string;
 }
 
 export interface JourneyStep {
@@ -43,6 +45,13 @@ export interface JourneyStep {
 
 export const SITE_CONFIG = {
   name: "MedBridge Global",
+  logo: {
+    src: "/images/medbridge-logo.png",
+    srcWhite: "/images/medbridge-logo-white.png",
+    icon: "/images/medbridge-icon.png",
+    iconWhite: "/images/medbridge-icon-white.png",
+    alt: "MedBridge",
+  },
   title: "MedBridge Global | Connected Healthcare",
   description:
     "Discover connected healthcare services, medical specialists, and modern diagnostic care with MedBridge Global.",
@@ -136,56 +145,56 @@ export const SITE_CONFIG = {
       name: "Internal Medicine",
       iconName: "Stethoscope",
       description: "Comprehensive adult disease prevention, diagnosis, and long-term care.",
-      href: "#appointment",
+      href: "/specialties/internal-medicine",
     },
     {
       id: "family-medicine",
       name: "Family Medicine",
       iconName: "HeartPulse",
       description: "Continuity of care for patients and family members of all ages.",
-      href: "#appointment",
+      href: "/specialties/family-medicine",
     },
     {
       id: "cardiology",
       name: "Cardiology",
       iconName: "Activity",
       description: "Advanced cardiac evaluations, preventative vascular care, and diagnostics.",
-      href: "#appointment",
+      href: "/specialties/cardiology",
     },
     {
       id: "orthopedics",
       name: "Orthopedics",
       iconName: "Bone",
       description: "Musculoskeletal health, joint restoration, and active mobility therapy.",
-      href: "#appointment",
+      href: "/specialties/orthopedics",
     },
     {
       id: "neurology",
       name: "Neurology",
       iconName: "Brain",
       description: "Specialized neurological diagnostics, care coordination, and cognitive support.",
-      href: "#appointment",
+      href: "/specialties/neurology",
     },
     {
       id: "dermatology",
       name: "Dermatology",
       iconName: "Sparkles",
       description: "Medical and procedural dermatological evaluations with tailored care plans.",
-      href: "#appointment",
+      href: "/specialties/dermatology",
     },
     {
       id: "pediatrics",
       name: "Pediatrics",
       iconName: "Baby",
       description: "Dedicated developmental checks, adolescent care, and childhood medicine.",
-      href: "#appointment",
+      href: "/specialties/pediatrics",
     },
     {
       id: "diagnostic-imaging",
       name: "Diagnostic Imaging",
       iconName: "Scan",
       description: "Precision medical imaging reports with clear, coordinated doctor consultations.",
-      href: "#appointment",
+      href: "/specialties/diagnostic-imaging",
     },
   ] as SpecialtyItem[],
 
@@ -193,22 +202,30 @@ export const SITE_CONFIG = {
     {
       title: "Unified Care Ecosystem",
       description: "Specialists, primary doctors, and diagnostic centers seamlessly share updates so you never repeat tests.",
-      badge: "Coordinated",
+      badge: "Coordinated Care",
+      image: "/images/unified-care-team.jpg",
+      alt: "Indian male and female doctors collaborating and discussing patient treatment in a modern hospital consultation",
     },
     {
       title: "Direct Specialist Access",
       description: "Streamlined referral pathways ensure you consult the most qualified clinician without weeks of delay.",
-      badge: "Rapid Access",
+      badge: "Direct Access",
+      image: "/images/specialist-consultation.jpg",
+      alt: "Professional Indian specialist doctor in a white coat consulting with patient",
     },
     {
       title: "Transparent & Digital First",
       description: "Review lab summaries, treatment timelines, and appointment schedules through a unified interface.",
-      badge: "Modern Tech",
+      badge: "Digital First",
+      image: "/images/digital-healthcare.jpg",
+      alt: "Indian physician reviewing electronic health records on laptop dashboard",
     },
     {
       title: "Patient-Centered Follow-up",
       description: "Dedicated clinical coordinators track your recovery milestones and guide subsequent care stages.",
-      badge: "Ongoing Care",
+      badge: "Continuous Care",
+      image: "/images/patient-follow-up.jpg",
+      alt: "Indian doctor interacting warmly with patient explaining recovery progress in modern clinic",
     },
   ] as BenefitItem[],
 

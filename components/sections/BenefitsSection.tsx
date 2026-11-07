@@ -1,53 +1,458 @@
-import React from "react";
-import { SITE_CONFIG } from "@/lib/site-config";
-import { ShieldCheck, Clock, Layers, Users } from "lucide-react";
+"use client";
 
-const icons = [Layers, Users, ShieldCheck, Clock];
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  HeartHandshake,
+  Network,
+  ShieldCheck,
+  ArrowRight,
+  ChevronRight,
+  ChevronLeft,
+  X,
+  Clock,
+  CheckCircle2,
+  Calendar,
+  UserCheck,
+  FileText,
+  Activity,
+  Sparkles,
+} from "lucide-react";
+import { useBooking } from "@/components/booking/BookingContext";
+import { DOCTORS_DATA } from "@/lib/medical-data";
+import PatientTestimonialsCarousel from "@/components/testimonials/PatientTestimonialsCarousel";
+
+interface BenefitCard {
+  id: string;
+  badge: string;
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+  actionLabel: string;
+}
+
+const BENEFIT_CARDS: BenefitCard[] = [
+  {
+    id: "unified-ecosystem",
+    badge: "COORDINATED CARE",
+    title: "Unified Care Ecosystem",
+    description: "Your specialists and care teams stay connected throughout your healthcare journey.",
+    image: "/images/unified-care-team.jpg",
+    alt: "Multidisciplinary Indian medical team collaborating on patient treatment in a modern hospital consultation",
+    actionLabel: "View How It Works",
+  },
+  {
+    id: "specialist-access",
+    badge: "EXPERT ACCESS",
+    title: "Direct Specialist Access",
+    description: "Find the right specialist and take the next step toward expert care.",
+    image: "/images/specialist-consultation.jpg",
+    alt: "Professional Indian specialist doctor in a white coat consulting with patient",
+    actionLabel: "Explore Doctors",
+  },
+  {
+    id: "digital-first",
+    badge: "DIGITAL HEALTHCARE",
+    title: "Transparent & Digital First",
+    description: "Access your healthcare information and stay informed throughout your care journey.",
+    image: "/images/digital-healthcare.jpg",
+    alt: "Indian doctor using laptop reviewing digital electronic health records and diagnostic dashboard",
+    actionLabel: "Explore Patient Experience",
+  },
+  {
+    id: "patient-followup",
+    badge: "CONTINUOUS SUPPORT",
+    title: "Patient-Centered Follow-up",
+    description: "Stay connected with your care team beyond your consultation.",
+    image: "/images/patient-follow-up.jpg",
+    alt: "Indian doctor interacting warmly with patient explaining recovery progress in modern clinic",
+    actionLabel: "Learn About Follow-up",
+  },
+];
+
+
 
 export default function BenefitsSection() {
+  const { openBooking } = useBooking();
+  const [activePanel, setActivePanel] = useState<string | null>(null);
+
+  // Top spotlight doctors for the specialist preview panel
+  const spotlightDoctors = DOCTORS_DATA.slice(0, 3);
+
+  const togglePanel = (panelId: string) => {
+    setActivePanel((prev) => (prev === panelId ? null : panelId));
+  };
+
   return (
-    <section id="why-us" className="w-full py-16 md:py-24 bg-[#FAFAFA] border-t border-neutral-100">
+    <section id="why-us" className="w-full py-16 md:py-24 bg-[#FAFAF9] border-t border-neutral-100 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-neutral-500 mb-2 block">
+        
+        {/* 1. Header with Trust Indicators */}
+        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-neutral-500 mb-2.5 block">
             THE MEDBRIDGE ADVANTAGE
           </span>
-          <h2 className="text-[28px] sm:text-[34px] font-bold tracking-tight text-[#080808]">
+          <h2 className="text-2xl sm:text-3xl md:text-[38px] font-bold tracking-tight text-[#080808] leading-tight">
             Why Patients Choose MedBridge Global
           </h2>
-          <p className="text-[13px] sm:text-[14px] text-neutral-600 mt-2">
-            Bridging fragmented clinical systems into a synchronized, empathetic healthcare journey.
+          <p className="text-sm sm:text-[15px] text-neutral-600 mt-3 leading-relaxed max-w-xl mx-auto font-normal">
+            Connected specialists, coordinated care, and a healthcare experience built around you.
           </p>
+
+          {/* Trust Indicators Bar Below Subtitle */}
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-neutral-600 font-medium">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-neutral-200/80 shadow-2xs">
+              <HeartHandshake className="w-3.5 h-3.5 text-neutral-800" />
+              <span>Patient-First Approach</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-neutral-200/80 shadow-2xs">
+              <Network className="w-3.5 h-3.5 text-neutral-800" />
+              <span>Coordinated Healthcare</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-neutral-200/80 shadow-2xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-neutral-800" />
+              <span>Transparent Communication</span>
+            </div>
+          </div>
         </div>
 
+        {/* 2. Four Interactive Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SITE_CONFIG.benefits.map((benefit, idx) => {
-            const Icon = icons[idx % icons.length];
+          {BENEFIT_CARDS.map((card) => {
+            const isSelected = activePanel === card.id;
             return (
               <div
-                key={benefit.title}
-                className="p-7 rounded-[18px] bg-white border border-neutral-200/80 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.03)] hover:border-neutral-400/80 transition-all duration-300 flex flex-col justify-between"
+                key={card.id}
+                onClick={() => togglePanel(card.id)}
+                className={`group rounded-[24px] bg-white border transition-all duration-300 flex flex-col overflow-hidden cursor-pointer ${
+                  isSelected
+                    ? "border-black shadow-[0_12px_32px_-6px_rgba(0,0,0,0.12)] ring-1 ring-black"
+                    : "border-neutral-200/80 hover:border-neutral-300 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_36px_-8px_rgba(0,0,0,0.08)]"
+                }`}
               >
-                <div>
-                  <div className="w-10 h-10 rounded-full bg-[#F5F5F5] flex items-center justify-center mb-5 text-neutral-800">
-                    <Icon className="w-5 h-5 stroke-[1.8]" />
+                {/* Card Image: ~55-60% of card */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-100">
+                  <Image
+                    src={card.image}
+                    alt={card.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+
+                  {/* Active Indicator Tag */}
+                  {isSelected && (
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black text-white text-[10px] font-bold tracking-wider uppercase shadow-xs">
+                      Active View
+                    </div>
+                  )}
+                </div>
+
+                {/* Card Body: ~40-45% of card */}
+                <div className="p-6 flex flex-col flex-1 justify-between bg-white">
+                  <div>
+                    <span className="inline-block text-[10.5px] font-bold tracking-[0.16em] uppercase text-neutral-500 mb-2">
+                      {card.badge}
+                    </span>
+                    <h3 className="text-lg font-bold text-[#080808] mb-2 leading-snug group-hover:text-black transition-colors">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-neutral-600 leading-relaxed font-normal">
+                      {card.description}
+                    </p>
                   </div>
-                  <span className="inline-block text-[10px] font-bold tracking-wider uppercase text-neutral-500 mb-2">
-                    {benefit.badge}
-                  </span>
-                  <h3 className="text-[16px] font-semibold text-[#080808] mb-2 leading-snug">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-[13px] text-neutral-600 leading-relaxed">
-                    {benefit.description}
-                  </p>
+
+                  {/* Action CTA Button */}
+                  <div className="mt-5 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs font-semibold text-neutral-900">
+                    <span className="group-hover:underline underline-offset-4">
+                      {card.actionLabel}
+                    </span>
+                    <div className="w-6 h-6 rounded-full bg-neutral-100 group-hover:bg-black group-hover:text-white flex items-center justify-center transition-all duration-200">
+                      <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
+
+        {/* 3. Interactive Detail Panels (Expandable right below the cards) */}
+        <AnimatePresence>
+          {activePanel && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: "auto" }}
+              exit={{ opacity: 0, y: -10, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden mt-6"
+            >
+              <div className="relative rounded-[26px] bg-white border border-neutral-300 p-6 sm:p-8 md:p-10 shadow-lg">
+                <button
+                  type="button"
+                  onClick={() => setActivePanel(null)}
+                  className="absolute top-5 right-5 w-8 h-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-neutral-600 hover:text-black transition-colors"
+                  aria-label="Close interactive panel"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+
+                {/* Panel 1: How Coordinated Care Works */}
+                {activePanel === "unified-ecosystem" && (
+                  <div>
+                    <div className="max-w-xl mb-6">
+                      <span className="text-[10.5px] font-bold tracking-[0.16em] uppercase text-neutral-500 block mb-1">
+                        CLINICAL ARCHITECTURE
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-bold text-neutral-900">
+                        How Unified Coordinated Care Operates
+                      </h3>
+                      <p className="text-xs sm:text-sm text-neutral-600 mt-1">
+                        Fragmented healthcare wastes patient time. MedBridge synchronizes your clinical journey across 3 connected pillars.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+                      <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200/80">
+                        <div className="w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-bold mb-3">
+                          1
+                        </div>
+                        <h4 className="text-sm font-bold text-neutral-900 mb-1">Primary Intake & History</h4>
+                        <p className="text-xs text-neutral-600 leading-relaxed">
+                          Your medical records, previous lab tests, and health metrics are centralized into one secure clinical file.
+                        </p>
+                      </div>
+
+                      <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200/80">
+                        <div className="w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-bold mb-3">
+                          2
+                        </div>
+                        <h4 className="text-sm font-bold text-neutral-900 mb-1">Specialist Multi-Review</h4>
+                        <p className="text-xs text-neutral-600 leading-relaxed">
+                          Attending specialists confer directly with diagnostics and primary physicians before prescribing treatment.
+                        </p>
+                      </div>
+
+                      <div className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200/80">
+                        <div className="w-8 h-8 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-bold mb-3">
+                          3
+                        </div>
+                        <h4 className="text-sm font-bold text-neutral-900 mb-1">Unified Action Plan</h4>
+                        <p className="text-xs text-neutral-600 leading-relaxed">
+                          You receive one transparent care roadmap with clear prescriptions, diagnostic timelines, and zero repeated tests.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3">
+                      <a
+                        href="/#specialties"
+                        onClick={() => setActivePanel(null)}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+                      >
+                        Explore Specialties <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {/* Panel 2: Direct Specialist Access & Featured Doctors */}
+                {activePanel === "specialist-access" && (
+                  <div>
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+                      <div>
+                        <span className="text-[10.5px] font-bold tracking-[0.16em] uppercase text-neutral-500 block mb-1">
+                          DIRECT ACCESS DIRECTORY
+                        </span>
+                        <h3 className="text-xl sm:text-2xl font-bold text-neutral-900">
+                          Connect with Verified Specialists
+                        </h3>
+                        <p className="text-xs sm:text-sm text-neutral-600 mt-1">
+                          Skip weeks of administrative referral delays. Book direct outpatient consultations.
+                        </p>
+                      </div>
+                      <Link
+                        href="/doctors"
+                        className="text-xs font-semibold text-neutral-900 underline underline-offset-4 hover:text-neutral-700"
+                      >
+                        Browse All Physicians →
+                      </Link>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                      {spotlightDoctors.map((doc) => (
+                        <div
+                          key={doc.id}
+                          className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex items-center gap-3.5"
+                        >
+                          <div className="relative w-12 h-12 rounded-full overflow-hidden bg-neutral-200 shrink-0">
+                            <Image
+                              src={doc.image}
+                              alt={doc.name}
+                              fill
+                              sizes="48px"
+                              className="object-cover object-top"
+                            />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 block truncate">
+                              {doc.specialtyName}
+                            </span>
+                            <h4 className="text-xs font-bold text-neutral-900 truncate">
+                              {doc.name}
+                            </h4>
+                            <p className="text-[11px] text-neutral-500 truncate">
+                              {doc.experienceYears}y exp • {doc.availability.split("(")[0]}
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setActivePanel(null);
+                              openBooking({ specialtyId: doc.specialtyId, doctorId: doc.id });
+                            }}
+                            className="px-3 py-1.5 rounded-full bg-neutral-900 text-white text-[11px] font-semibold tracking-wider uppercase hover:bg-neutral-800 transition-colors shrink-0 cursor-pointer"
+                          >
+                            Book
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Panel 3: Transparent & Digital First Preview */}
+                {activePanel === "digital-first" && (
+                  <div>
+                    <div className="max-w-xl mb-6">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neutral-100 text-neutral-800 text-[10.5px] font-semibold mb-2">
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>Interactive Patient Experience Preview</span>
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-neutral-900">
+                        Synchronized Digital Records & Timelines
+                      </h3>
+                      <p className="text-xs sm:text-sm text-neutral-600 mt-1">
+                        Patients enjoy instant private lookup of diagnostic summaries, past consultations, and care coordinator notes.
+                      </p>
+                    </div>
+
+                    <div className="bg-neutral-50 rounded-2xl p-5 border border-neutral-200 mb-6">
+                      <div className="flex items-center justify-between pb-3 border-b border-neutral-200 text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono font-bold text-neutral-900">MBG-2026-8812</span>
+                          <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold text-[10px] uppercase">
+                            Confirmed
+                          </span>
+                        </div>
+                        <span className="text-[11px] text-neutral-500 italic">Sample demonstrative record</span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-3 text-xs">
+                        <div>
+                          <span className="text-neutral-500 block text-[11px]">Specialist</span>
+                          <strong className="text-neutral-900">Dr. Marcus Chen, MD, FACC</strong>
+                        </div>
+                        <div>
+                          <span className="text-neutral-500 block text-[11px]">Department</span>
+                          <strong className="text-neutral-900">Cardiology & Vascular</strong>
+                        </div>
+                        <div>
+                          <span className="text-neutral-500 block text-[11px]">Reports Attached</span>
+                          <strong className="text-neutral-900">Echocardiogram & Lipid Panel</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Link
+                        href="/appointments"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-neutral-800 transition-colors"
+                      >
+                        Access Patient Portal <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  </div>
+                )}
+
+                {/* Panel 4: Patient-Centered Follow-up Continuum */}
+                {activePanel === "patient-followup" && (
+                  <div>
+                    <div className="max-w-xl mb-6">
+                      <span className="text-[10.5px] font-bold tracking-[0.16em] uppercase text-neutral-500 block mb-1">
+                        POST-VISIT CONTINUUM
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-bold text-neutral-900">
+                        Care That Extends Beyond Your Consultation
+                      </h3>
+                      <p className="text-xs sm:text-sm text-neutral-600 mt-1">
+                        Recovery is a milestone journey. Dedicated coordinators stay in touch to track progress and verify healing.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-6">
+                      <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200">
+                        <span className="text-xs font-bold text-neutral-400 block mb-1 font-mono">STAGE 01</span>
+                        <h4 className="text-xs font-bold text-neutral-900 mb-1">Outpatient Visit</h4>
+                        <p className="text-[11px] text-neutral-600 leading-relaxed">
+                          In-depth clinical consultation, biometric diagnostics, and personalized care roadmap.
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200">
+                        <span className="text-xs font-bold text-neutral-400 block mb-1 font-mono">STAGE 02</span>
+                        <h4 className="text-xs font-bold text-neutral-900 mb-1">72-Hour Check-in</h4>
+                        <p className="text-[11px] text-neutral-600 leading-relaxed">
+                          Digital care review assessing medication tolerance, questions, and immediate recovery.
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200">
+                        <span className="text-xs font-bold text-neutral-400 block mb-1 font-mono">STAGE 03</span>
+                        <h4 className="text-xs font-bold text-neutral-900 mb-1">14-Day Milestone</h4>
+                        <p className="text-[11px] text-neutral-600 leading-relaxed">
+                          Progress confirmation and follow-up lab or imaging review with your attending physician.
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-2xl bg-neutral-50 border border-neutral-200">
+                        <span className="text-xs font-bold text-neutral-400 block mb-1 font-mono">STAGE 04</span>
+                        <h4 className="text-xs font-bold text-neutral-900 mb-1">Wellness Continuity</h4>
+                        <p className="text-[11px] text-neutral-600 leading-relaxed">
+                          Ongoing preventive screening alerts and lifestyle coaching for long-term health.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActivePanel(null);
+                          openBooking();
+                        }}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-neutral-800 transition-colors cursor-pointer"
+                      >
+                        Schedule Your Visit <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* 6. Real Patient Experiences ("Real Experiences. Better Care.") Animated Carousel */}
+        <div className="mt-16 md:mt-24 pt-14 border-t border-neutral-200/80">
+          <PatientTestimonialsCarousel />
+        </div>
+
       </div>
     </section>
   );
 }
-
