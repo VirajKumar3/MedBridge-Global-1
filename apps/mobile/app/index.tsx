@@ -18,7 +18,7 @@ export default function SplashScreen() {
             router.replace("/patient/home");
           }
         } else {
-          router.replace("/(auth)/welcome");
+          router.replace("/welcome");
         }
       }, 800);
       return () => clearTimeout(timer);

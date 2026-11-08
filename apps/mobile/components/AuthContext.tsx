@@ -52,20 +52,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check initial auth state
+    // Check initial auth state with a 1.5s timeout safeguard
+    let isMounted = true;
+    const timeout = new Promise((resolve) => setTimeout(resolve, 1500));
+
     async function checkAuth() {
       try {
-        const res = await authApi.getMe();
-        if (res.success && res.user) {
+        const res = (await Promise.race([authApi.getMe(), timeout])) as any;
+        if (isMounted && res && res.success && res.user) {
           setUser(res.user);
         }
-      } catch (err) {
+      } catch {
         // Not logged in or backend offline
       } finally {
-        setIsLoading(false);
+        if (isMounted) setIsLoading(false);
       }
     }
     checkAuth();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const login = async (email: string, pass: string, role?: string) => {

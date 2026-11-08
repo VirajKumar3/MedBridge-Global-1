@@ -125,7 +125,7 @@ export default function RegisterPatientScreen() {
 
           <View style={styles.switchAuth}>
             <Text style={styles.switchAuthText}>Already have an account? </Text>
-            <TouchableOpacity onPress={() => router.push("/(auth)/login")}>
+            <TouchableOpacity onPress={() => router.push("/login")}>
               <Text style={styles.switchAuthLink}>Sign in</Text>
             </TouchableOpacity>
           </View>

@@ -107,7 +107,7 @@ export default function LoginScreen() {
             <View style={styles.inputGroup}>
               <View style={styles.passLabelRow}>
                 <Text style={styles.label}>Password</Text>
-                <TouchableOpacity onPress={() => router.push("/(auth)/forgot-password")}>
+                <TouchableOpacity onPress={() => router.push("/forgot-password")}>
                   <Text style={styles.forgotText}>Forgot?</Text>
                 </TouchableOpacity>
               </View>
@@ -151,7 +151,7 @@ export default function LoginScreen() {
           {/* Switch to Register */}
           <View style={styles.switchAuth}>
             <Text style={styles.switchAuthText}>Don't have an account yet? </Text>
-            <TouchableOpacity onPress={() => router.push(role === "doctor" ? "/(auth)/register-doctor" : "/(auth)/register-patient")}>
+            <TouchableOpacity onPress={() => router.push(role === "doctor" ? "/register-doctor" : "/register-patient")}>
               <Text style={styles.switchAuthLink}>Sign up</Text>
             </TouchableOpacity>
           </View>

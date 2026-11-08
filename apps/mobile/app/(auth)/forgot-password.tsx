@@ -29,7 +29,7 @@ export default function ForgotPasswordScreen() {
           <Text style={styles.successBody}>
             If an account exists for {email}, a recovery link has been dispatched. Please review your inbox.
           </Text>
-          <TouchableOpacity style={styles.returnBtn} onPress={() => router.replace("/(auth)/login")}>
+          <TouchableOpacity style={styles.returnBtn} onPress={() => router.replace("/login")}>
             <Text style={styles.returnBtnText}>Return to Sign In</Text>
           </TouchableOpacity>
         </View>

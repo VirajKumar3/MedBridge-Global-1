@@ -17,7 +17,7 @@ export default function DoctorProfileScreen() {
         style: "destructive",
         onPress: async () => {
           await logout();
-          router.replace("/(auth)/welcome");
+          router.replace("/welcome");
         },
       },
     ]);

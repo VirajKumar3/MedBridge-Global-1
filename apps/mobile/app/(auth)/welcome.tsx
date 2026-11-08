@@ -59,7 +59,7 @@ export default function WelcomeScreen() {
           <TouchableOpacity
             style={styles.primaryBtn}
             activeOpacity={0.85}
-            onPress={() => router.push("/(auth)/login")}
+            onPress={() => router.push("/login")}
           >
             <Text style={styles.primaryBtnText}>Sign In to Account</Text>
           </TouchableOpacity>
@@ -67,7 +67,7 @@ export default function WelcomeScreen() {
           <TouchableOpacity
             style={styles.secondaryBtn}
             activeOpacity={0.85}
-            onPress={() => router.push("/(auth)/register-patient")}
+            onPress={() => router.push("/register-patient")}
           >
             <Text style={styles.secondaryBtnText}>Create Patient Account</Text>
           </TouchableOpacity>
@@ -75,7 +75,7 @@ export default function WelcomeScreen() {
           <TouchableOpacity
             style={styles.textBtn}
             activeOpacity={0.7}
-            onPress={() => router.push("/(auth)/register-doctor")}
+            onPress={() => router.push("/register-doctor")}
           >
             <Text style={styles.textBtnText}>Are you a physician? <Text style={styles.textBtnHighlight}>Join Practice</Text></Text>
           </TouchableOpacity>
