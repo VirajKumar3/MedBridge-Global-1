@@ -12,7 +12,7 @@
     "web:build": "npm run build --workspace=@medbridge/web",
     "build": "npm run build --workspace=@medbridge/web",
     "mobile": "npm run dev --workspace=@medbridge/mobile",
-    "mobile:tunnel": "npm run tunnel --workspace=@medbridge/mobile",
+    "mobile:tunnel": "npm run tunnel --workspace=@medbridge/mobile --",
     "mobile:ios": "npm run ios --workspace=@medbridge/mobile",
     "mobile:android": "npm run android --workspace=@medbridge/mobile",
     "backend": "npm run dev --workspace=@medbridge/backend",
