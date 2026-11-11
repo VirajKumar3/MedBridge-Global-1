@@ -73,7 +73,7 @@ export const SITE_CONFIG = {
     description:
       "From trusted specialists to coordinated medical services, MedBridge Global brings healthcare closer together — making expert care easier to access, navigate, and experience.",
     primaryCta: {
-      label: "BOOK AN APPOINTMENT",
+      label: "GET STARTED",
       href: "#appointment",
     },
     secondaryCta: {
