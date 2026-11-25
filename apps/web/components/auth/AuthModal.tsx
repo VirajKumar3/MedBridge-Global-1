@@ -147,10 +147,10 @@ export default function AuthModal() {
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/70 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/60 dark:bg-black/75 backdrop-blur-md animate-in fade-in duration-200"
     >
-      {/* Modal Dialog Card (1180-1240px width, 720-760px height adapting to screen) */}
-      <div className="relative w-full max-w-[1220px] h-[92vh] max-h-[760px] min-h-[580px] bg-white rounded-[26px] sm:rounded-[28px] border border-neutral-200/90 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.28)] flex flex-col md:flex-row overflow-hidden animate-in zoom-in-95 duration-200">
+      {/* Modal Dialog Card */}
+      <div className="relative w-full max-w-[1220px] h-[92vh] max-h-[760px] min-h-[580px] bg-white/95 dark:bg-[#0f121d]/95 backdrop-blur-3xl rounded-[28px] sm:rounded-[34px] border border-white/80 dark:border-white/15 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.35)] flex flex-col md:flex-row overflow-hidden animate-in zoom-in-95 duration-200">
         
         {/* ============================================================== */}
         {/* MOBILE COMPACT BANNER (< md screens)                           */}
@@ -306,7 +306,7 @@ export default function AuthModal() {
         {/* ============================================================== */}
         {/* RIGHT PANEL – REFINED AUTHENTICATION EXPERIENCE (Desktop: 55%) */}
         {/* ============================================================== */}
-        <div className="w-full md:w-[55%] h-full flex flex-col justify-between bg-[#FDFDFC] p-6 sm:p-8 md:p-10 lg:p-12 overflow-hidden relative">
+        <div className="w-full md:w-[55%] h-full flex flex-col justify-between bg-white/75 dark:bg-[#111524]/85 backdrop-blur-2xl p-6 sm:p-8 md:p-10 lg:p-12 overflow-hidden relative text-neutral-900 dark:text-white">
           
           {/* 1. TOP HEADER (Brand mark / Role Back, Segmented Selector & Close) */}
           <div className="flex items-center justify-between shrink-0 mb-4 sm:mb-6">
@@ -315,28 +315,28 @@ export default function AuthModal() {
                 <button
                   type="button"
                   onClick={() => setAuthModalMode("select-role")}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-500 hover:text-black transition-colors cursor-pointer group py-1"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer group py-1"
                 >
                   <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-0.5" />
                   <span>Choose Role</span>
                 </button>
               ) : (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-neutral-100 border border-neutral-200/70 text-[10px] font-bold text-neutral-600 tracking-wider uppercase">
-                  <Lock className="w-3 h-3 text-neutral-500" /> SECURE PORTAL
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/60 dark:bg-white/10 border border-white/80 dark:border-white/15 text-[10px] font-bold text-neutral-700 dark:text-neutral-300 tracking-wider uppercase shadow-2xs">
+                  <Lock className="w-3 h-3 text-[#7657ff]" /> SECURE PORTAL
                 </span>
               )}
             </div>
 
             {/* Top Right: Segmented Role Controller & Close Button */}
             <div className="flex items-center gap-2.5">
-              <div className="inline-flex items-center bg-[#F1F1EE] p-0.5 rounded-full border border-neutral-200/70 shadow-2xs">
+              <div className="inline-flex items-center bg-white/60 dark:bg-white/10 p-0.5 rounded-full border border-white/80 dark:border-white/15 shadow-2xs">
                 <button
                   type="button"
                   onClick={() => handleSelectRole("patient", authModalMode === "select-role" ? "login" : authModalMode)}
                   className={`px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
                     authRole === "patient" && authModalMode !== "select-role"
-                      ? "bg-white text-black shadow-xs font-bold"
-                      : "text-neutral-500 hover:text-neutral-900"
+                      ? "bg-[#0a0a0a] text-white dark:bg-white dark:text-black shadow-xs font-bold"
+                      : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                   }`}
                 >
                   Patient
@@ -346,8 +346,8 @@ export default function AuthModal() {
                   onClick={() => handleSelectRole("doctor", authModalMode === "select-role" ? "login" : authModalMode)}
                   className={`px-3 py-1 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
                     authRole === "doctor" && authModalMode !== "select-role"
-                      ? "bg-white text-black shadow-xs font-bold"
-                      : "text-neutral-500 hover:text-neutral-900"
+                      ? "bg-[#0a0a0a] text-white dark:bg-white dark:text-black shadow-xs font-bold"
+                      : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                   }`}
                 >
                   Doctor
@@ -357,7 +357,7 @@ export default function AuthModal() {
               <button
                 type="button"
                 onClick={closeAuthModal}
-                className="w-8 h-8 rounded-full text-neutral-400 hover:text-black hover:bg-neutral-100 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-4 h-4 stroke-[2.2]" />

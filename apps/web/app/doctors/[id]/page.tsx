@@ -55,10 +55,10 @@ export default async function DoctorProfilePage({ params }: PageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-white text-[#080808] flex flex-col selection:bg-neutral-200">
+    <main className="min-h-screen flex flex-col relative text-neutral-900 dark:text-white">
       <Navbar />
 
-      <section className="pt-28 sm:pt-32 pb-14 md:pb-20 bg-[#FAFAFA] border-b border-neutral-100">
+      <section className="pt-28 sm:pt-32 pb-14 md:pb-20 relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumbs */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-neutral-500 mb-8">
@@ -119,7 +119,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
                   <span className="text-neutral-500 font-medium flex items-center gap-1.5">
                     <DollarSign className="w-3.5 h-3.5 text-neutral-400" /> Initial Consult
                   </span>
-                  <span className="font-bold text-neutral-900">{doctor.consultationFee}</span>
+                  <span className="font-bold text-neutral-900 dark:text-white">{doctor.consultationFee}</span>
                 </div>
               </div>
             </div>
@@ -129,44 +129,44 @@ export default async function DoctorProfilePage({ params }: PageProps) {
               <div className="flex flex-wrap items-center gap-2 mb-3">
                 <Link
                   href={`/specialties/${doctor.specialtyId}`}
-                  className="inline-block px-3 py-1 rounded-full bg-white border border-neutral-200 text-neutral-800 text-[11px] font-bold tracking-wider uppercase hover:bg-neutral-100 transition-colors"
+                  className="inline-block px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 backdrop-blur-md border border-neutral-200/80 dark:border-white/10 text-neutral-800 dark:text-neutral-200 text-[11px] font-bold tracking-wider uppercase hover:bg-white dark:hover:bg-white/20 transition-colors"
                 >
                   {doctor.specialtyName}
                 </Link>
-                <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-900 text-xs font-semibold">
+                <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-300 text-xs font-semibold backdrop-blur-md">
                   <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
                   <span>{doctor.rating}</span>
-                  <span className="text-amber-700 font-normal">({doctor.reviewsCount} verified reviews)</span>
+                  <span className="text-amber-700 dark:text-amber-400 font-normal">({doctor.reviewsCount} verified reviews)</span>
                 </div>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#080808] leading-tight mb-2">
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white leading-tight mb-2">
                 {doctor.name}
               </h1>
-              <p className="text-base sm:text-lg font-medium text-neutral-600 mb-6">
+              <p className="text-base sm:text-lg font-medium text-neutral-600 dark:text-neutral-400 mb-6">
                 {doctor.title}
               </p>
 
               {/* Bio */}
               <div className="mb-8">
-                <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2">
+                <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2">
                   Biography & Clinical Focus
                 </h2>
-                <p className="text-sm sm:text-base text-neutral-700 leading-relaxed">
+                <p className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
                   {doctor.bio}
                 </p>
               </div>
 
               {/* Areas of Expertise */}
               <div className="mb-8">
-                <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-3">
+                <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3">
                   Areas of Clinical Expertise
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {doctor.areasOfExpertise.map((area, idx) => (
                     <span
                       key={idx}
-                      className="px-3.5 py-1.5 rounded-full bg-white border border-neutral-200 text-xs font-medium text-neutral-800 shadow-2xs"
+                      className="px-3.5 py-1.5 rounded-full bg-white/70 dark:bg-white/10 backdrop-blur-md border border-neutral-200/80 dark:border-white/10 text-xs font-medium text-neutral-800 dark:text-neutral-200 shadow-2xs"
                     >
                       {area}
                     </span>
@@ -175,15 +175,15 @@ export default async function DoctorProfilePage({ params }: PageProps) {
               </div>
 
               {/* Education & Fellowships */}
-              <div className="mb-8 p-6 rounded-2xl bg-white border border-neutral-200/80 shadow-xs">
-                <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-3 flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-neutral-700" />
+              <div className="mb-8 p-6 rounded-2xl bg-white/70 dark:bg-white/[0.06] backdrop-blur-md border border-neutral-200/80 dark:border-white/10 shadow-xs">
+                <h2 className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3 flex items-center gap-2">
+                  <GraduationCap className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />
                   Education, Fellowships & Board Certifications
                 </h2>
                 <ul className="space-y-2.5">
                   {doctor.education.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700">
-                      <CheckCircle className="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
+                    <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-neutral-300">
+                      <CheckCircle className="w-4 h-4 text-neutral-900 dark:text-white shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -191,8 +191,8 @@ export default async function DoctorProfilePage({ params }: PageProps) {
               </div>
 
               {/* Availability Notice */}
-              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-900 text-xs flex items-center gap-2.5">
-                <Calendar className="w-4 h-4 text-emerald-700 shrink-0" />
+              <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-300 text-xs flex items-center gap-2.5 backdrop-blur-md">
+                <Calendar className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <span>
                   <strong>Consultation Schedule:</strong> {doctor.availability}
                 </span>
@@ -203,22 +203,22 @@ export default async function DoctorProfilePage({ params }: PageProps) {
       </section>
 
       {/* Direct Booking Section for this Doctor */}
-      <section id="book-doctor" className="py-16 md:py-24 bg-neutral-900 text-white border-t border-neutral-800">
+      <section id="book-doctor" className="py-16 md:py-24 relative">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-neutral-300 text-[11px] font-semibold tracking-wider uppercase mb-3">
+            <span className="inline-block px-3 py-1 rounded-full bg-neutral-900/5 dark:bg-white/10 border border-neutral-200/80 dark:border-white/10 text-neutral-700 dark:text-neutral-300 text-[11px] font-semibold tracking-wider uppercase mb-3">
               Direct Physician Booking
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white mb-2">
               Schedule with {doctor.name}
             </h2>
-            <p className="text-sm text-neutral-400 max-w-md mx-auto">
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md mx-auto">
               Confirm your appointment slot with {doctor.name} for comprehensive outpatient evaluation.
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 sm:p-8 text-neutral-900 shadow-2xl">
-            <Suspense fallback={<div className="py-20 text-center text-sm text-neutral-500">Loading booking form...</div>}>
+          <div className="bg-white/80 dark:bg-[#12141c]/80 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 text-neutral-900 dark:text-white border border-neutral-200/80 dark:border-white/10 shadow-2xl">
+            <Suspense fallback={<div className="py-20 text-center text-sm text-neutral-500 dark:text-neutral-400">Loading booking form...</div>}>
               <AppointmentBookingForm
                 initialSpecialtyId={doctor.specialtyId}
                 initialDoctorId={doctor.id}

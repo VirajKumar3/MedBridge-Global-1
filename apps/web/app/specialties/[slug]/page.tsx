@@ -52,7 +52,7 @@ export default async function SpecialtyDetailPage({ params }: PageProps) {
   const doctors = getDoctorsBySpecialty(specialty.id);
 
   return (
-    <main className="min-h-screen bg-white text-[#080808] flex flex-col selection:bg-neutral-200">
+    <main className="min-h-screen flex flex-col relative text-neutral-900 dark:text-white">
       <Navbar />
 
       {/* 1. Image-Led Split Specialty Hero */}

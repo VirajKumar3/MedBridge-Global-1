@@ -50,7 +50,7 @@ export default function ChatMessage({
       const parsedLine = parts.map((part, pIdx) => {
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
-            <strong key={pIdx} className="font-semibold text-neutral-900">
+            <strong key={pIdx} className="font-semibold text-neutral-900 dark:text-white">
               {part.slice(2, -2)}
             </strong>
           );
@@ -59,7 +59,7 @@ export default function ChatMessage({
           return (
             <code
               key={pIdx}
-              className="px-1.5 py-0.5 rounded bg-neutral-100 font-mono text-[11px] text-neutral-900 font-semibold border border-neutral-200/60"
+              className="px-1.5 py-0.5 rounded bg-white/60 dark:bg-white/10 font-mono text-[11px] text-neutral-900 dark:text-neutral-100 font-semibold border border-white/80 dark:border-white/15"
             >
               {part.slice(1, -1)}
             </code>
@@ -117,10 +117,10 @@ export default function ChatMessage({
         <div
           className={`p-3.5 rounded-2xl text-xs sm:text-[13px] leading-relaxed transition-all shadow-2xs ${
             isUser
-              ? "bg-[#111111] text-white rounded-tr-xs"
+              ? "bg-[#0a0a0a] text-white dark:bg-white dark:text-neutral-950 rounded-tr-xs shadow-xs"
               : message.isEmergencyAlert
-              ? "bg-red-50 text-red-950 border border-red-200 rounded-tl-xs"
-              : "bg-white text-neutral-900 border border-neutral-200/80 rounded-tl-xs shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
+              ? "bg-red-50 dark:bg-red-950/40 text-red-950 dark:text-red-200 border border-red-200/80 dark:border-red-800/40 rounded-tl-xs"
+              : "bg-white/70 dark:bg-white/[0.08] backdrop-blur-md text-neutral-900 dark:text-neutral-100 border border-white/80 dark:border-white/12 rounded-tl-xs shadow-2xs"
           }`}
         >
           {renderFormattedText(message.text)}

@@ -11,8 +11,8 @@ import AppointmentCTASection from "@/components/sections/AppointmentCTASection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-[#080808] flex flex-col selection:bg-neutral-200">
-      {/* Pill Floating Navigation */}
+    <main className="min-h-screen flex flex-col relative">
+      {/* Floating Glass Navigation */}
       <Navbar />
 
       {/* Hero Section */}
@@ -24,7 +24,7 @@ export default function Home() {
       {/* Specialties Grid */}
       <SpecialtiesSection />
 
-      {/* Why MedBridge Global - Benefits */}
+      {/* Why MedBridge Global - Benefits & Patient Reviews */}
       <BenefitsSection />
 
       {/* Coordinated Care Continuum - How It Works */}
@@ -36,7 +36,7 @@ export default function Home() {
       {/* Appointment CTA Form & Consultation Intake */}
       <AppointmentCTASection />
 
-      {/* Comprehensive Footer */}
+      {/* Comprehensive Glass Footer */}
       <Footer />
     </main>
   );

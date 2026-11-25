@@ -40,7 +40,7 @@ export default function ChatbotWidget() {
               <button
                 type="button"
                 onClick={toggleOpen}
-                className="group relative flex items-center px-4 py-1.5 rounded-full bg-white text-neutral-900 border border-neutral-200/90 shadow-[0_6px_20px_-4px_rgba(0,0,0,0.12)] hover:shadow-md hover:border-black transition-all cursor-pointer text-xs font-semibold"
+                className="group relative flex items-center px-4 py-1.5 rounded-full bg-white/80 dark:bg-[#121624]/85 backdrop-blur-xl text-neutral-900 dark:text-white border border-white/80 dark:border-white/15 shadow-[0_6px_20px_-4px_rgba(0,0,0,0.12)] hover:shadow-md hover:border-[#7657ff]/40 transition-all cursor-pointer text-xs font-semibold"
               >
                 <span>Ask MedBridge AI</span>
               </button>
@@ -53,10 +53,10 @@ export default function ChatbotWidget() {
             onClick={toggleOpen}
             aria-expanded={isOpen}
             aria-label="Open MedBridge AI Assistant"
-            className="group relative w-14 h-14 sm:w-15 sm:h-15 rounded-full bg-[#0a0a0a] hover:bg-black text-white flex items-center justify-center transition-all duration-300 shadow-[0_8px_28px_-4px_rgba(147,51,234,0.35),0_4px_16px_rgba(0,0,0,0.18)] hover:shadow-[0_12px_36px_-4px_rgba(147,51,234,0.5)] hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-500 p-0.5"
+            className="group relative w-14 h-14 sm:w-15 sm:h-15 rounded-full bg-white/60 dark:bg-black/60 backdrop-blur-2xl border border-white/80 dark:border-white/15 flex items-center justify-center transition-all duration-300 shadow-[0_8px_28px_-4px_rgba(118,87,255,0.4),0_4px_16px_rgba(0,0,0,0.18)] hover:shadow-[0_12px_36px_-4px_rgba(118,87,255,0.55)] hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-purple-500 p-0.5"
           >
             {/* Soft Luminous Glow Aura */}
-            <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-md group-hover:bg-purple-500/40 transition-all pointer-events-none" />
+            <div className="absolute inset-0 rounded-full bg-[#7657ff]/20 dark:bg-[#7657ff]/30 blur-md group-hover:bg-[#7657ff]/40 transition-all pointer-events-none" />
 
             <div className="relative w-full h-full flex items-center justify-center">
               <Image
