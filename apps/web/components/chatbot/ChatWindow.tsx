@@ -158,17 +158,17 @@ export default function ChatWindow({
     <div
       role="dialog"
       aria-label="MedBridge AI Medical Assistant"
-      className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 z-50 w-[92vw] sm:w-[410px] md:w-[420px] h-[575px] max-h-[84vh] bg-white rounded-[26px] sm:rounded-[28px] border border-neutral-200/90 shadow-[0_24px_64px_-12px_rgba(0,0,0,0.22),0_4px_16px_rgba(0,0,0,0.06)] flex flex-col overflow-hidden animate-in zoom-in-95 fade-in slide-in-from-bottom-4 duration-300"
+      className="fixed bottom-20 sm:bottom-24 right-3 sm:right-6 z-50 w-[92vw] sm:w-[410px] md:w-[420px] h-[575px] max-h-[84vh] bg-white/85 dark:bg-[#0c0f1c]/90 backdrop-blur-3xl rounded-[28px] sm:rounded-[32px] border border-white/80 dark:border-white/12 shadow-[0_24px_64px_-12px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.9)] dark:shadow-[0_25px_65px_-12px_rgba(0,0,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.15)] flex flex-col overflow-hidden animate-in zoom-in-95 fade-in slide-in-from-bottom-4 duration-300"
     >
       {/* 1. Header (Clean, Light with "AI Chat" Title & Controls) */}
-      <header className="px-4 sm:px-5 py-3 border-b border-neutral-100 flex items-center justify-between shrink-0 bg-white select-none">
+      <header className="px-4 sm:px-5 py-3 border-b border-neutral-200/50 dark:border-white/10 flex items-center justify-between shrink-0 bg-white/40 dark:bg-white/[0.03] backdrop-blur-md select-none text-neutral-900 dark:text-white">
         {/* Left Action / Brand */}
         <div className="flex items-center gap-2">
           {hasMessages ? (
             <button
               type="button"
               onClick={handleStartNewConversation}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 border border-neutral-200/60 text-[10.5px] font-semibold transition-all cursor-pointer"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/60 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 text-neutral-800 dark:text-neutral-200 border border-white/80 dark:border-white/15 text-[10.5px] font-semibold transition-all cursor-pointer shadow-2xs"
             >
               <Plus className="w-3 h-3" />
               <span>New</span>
@@ -182,7 +182,7 @@ export default function ChatWindow({
                 height={18}
                 className="w-4.5 h-4.5 rounded-full object-contain"
               />
-              <span className="text-[10.5px] font-bold tracking-[0.14em] text-neutral-400 uppercase">
+              <span className="text-[10.5px] font-bold tracking-[0.14em] text-neutral-500 dark:text-neutral-400 uppercase">
                 MedBridge
               </span>
             </div>
@@ -191,10 +191,10 @@ export default function ChatWindow({
 
         {/* Center Title */}
         <div className="flex items-center gap-1.5">
-          <span className="text-sm font-semibold tracking-tight text-neutral-900">
+          <span className="text-sm font-semibold tracking-tight text-neutral-900 dark:text-white">
             AI Chat
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
         </div>
 
         {/* Right Controls (Minimize & Close) */}
@@ -203,7 +203,7 @@ export default function ChatWindow({
             <button
               type="button"
               onClick={handleRegenerateLast}
-              className="w-7 h-7 rounded-full text-neutral-400 hover:text-black hover:bg-neutral-100 flex items-center justify-center transition-colors cursor-pointer"
+              className="w-7 h-7 rounded-full text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
               title="Regenerate Last Response"
               aria-label="Regenerate last response"
             >
@@ -215,7 +215,7 @@ export default function ChatWindow({
             <button
               type="button"
               onClick={onMinimize}
-              className="w-7 h-7 rounded-full text-neutral-400 hover:text-black hover:bg-neutral-100 flex items-center justify-center transition-colors cursor-pointer"
+              className="w-7 h-7 rounded-full text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
               title="Minimize"
               aria-label="Minimize"
             >
@@ -226,7 +226,7 @@ export default function ChatWindow({
           <button
             type="button"
             onClick={onClose}
-            className="w-7 h-7 rounded-full text-neutral-400 hover:text-black hover:bg-neutral-100 flex items-center justify-center transition-colors cursor-pointer"
+            className="w-7 h-7 rounded-full text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/50 dark:hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
             title="Close AI Chat"
             aria-label="Close AI Chat"
           >
@@ -236,7 +236,7 @@ export default function ChatWindow({
       </header>
 
       {/* 2. Scrollable Dynamic Body (Welcome State OR Conversation Feed) */}
-      <div className="flex-1 overflow-y-auto px-4 sm:px-5 py-4 flex flex-col justify-between bg-white">
+      <div className="flex-1 overflow-y-auto px-4 sm:px-5 py-4 flex flex-col justify-between bg-transparent">
         {!hasMessages ? (
           /* ============================================================ */
           /* COMPACT WELCOME EXPERIENCE WITH GLOWING MEDICAL AI ORB       */
@@ -248,18 +248,18 @@ export default function ChatWindow({
             </div>
 
             {/* Headline */}
-            <h2 className="text-lg sm:text-[20px] font-bold tracking-tight text-[#080808] leading-snug mb-1.5">
+            <h2 className="text-lg sm:text-[20px] font-bold tracking-tight text-neutral-900 dark:text-white leading-snug mb-1.5">
               Your Health, One Conversation Away.
             </h2>
 
             {/* Supporting Text */}
-            <p className="text-[11.5px] sm:text-xs text-neutral-500 max-w-xs leading-relaxed mb-4 font-normal">
+            <p className="text-[11.5px] sm:text-xs text-neutral-600 dark:text-neutral-400 max-w-xs leading-relaxed mb-4 font-normal">
               I&rsquo;m MedBridge AI, your healthcare companion. I can help you find the right specialist, understand healthcare services, and book appointments.
             </p>
 
             {/* Smart Prompt Suggestions (Compact 2-Column Grid) */}
             <div className="w-full">
-              <span className="text-[9.5px] font-bold tracking-[0.16em] uppercase text-neutral-400 block mb-2">
+              <span className="text-[9.5px] font-bold tracking-[0.16em] uppercase text-[#7657ff] dark:text-[#a99aff] block mb-2">
                 Suggested Prompts
               </span>
 
@@ -277,12 +277,12 @@ export default function ChatWindow({
                           handleSendMessage(item.query);
                         }
                       }}
-                      className="group p-2 sm:p-2.5 rounded-xl bg-neutral-50/70 hover:bg-neutral-100/90 border border-neutral-200/70 hover:border-neutral-300 transition-all flex items-center gap-2 cursor-pointer shadow-2xs hover:shadow-xs active:scale-[0.99]"
+                      className="group p-2 sm:p-2.5 rounded-xl bg-white/60 dark:bg-white/[0.06] hover:bg-white dark:hover:bg-white/[0.12] border border-white/80 dark:border-white/12 transition-all flex items-center gap-2 cursor-pointer shadow-2xs hover:shadow-xs active:scale-[0.99]"
                     >
-                      <div className="w-6 h-6 rounded-lg bg-white border border-neutral-200/80 flex items-center justify-center text-neutral-600 group-hover:text-black transition-colors shrink-0 shadow-2xs">
+                      <div className="w-6 h-6 rounded-lg bg-white/80 dark:bg-white/10 border border-white/90 dark:border-white/15 flex items-center justify-center text-[#7657ff] dark:text-[#a99aff] group-hover:scale-105 transition-transform shrink-0 shadow-2xs">
                         <Icon className="w-3 h-3 stroke-[1.8]" />
                       </div>
-                      <span className="text-[11px] font-medium text-neutral-800 group-hover:text-black transition-colors line-clamp-1">
+                      <span className="text-[11px] font-medium text-neutral-800 dark:text-neutral-200 group-hover:text-black dark:group-hover:text-white transition-colors line-clamp-1">
                         {item.title}
                       </span>
                     </button>

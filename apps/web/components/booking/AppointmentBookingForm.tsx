@@ -645,24 +645,24 @@ export default function AppointmentBookingForm({
   // WIZARD STEPS (1, 2, 3)
   // -------------------------------------------------------------
   return (
-    <div className="text-left">
+    <div className="text-left text-neutral-900 dark:text-white">
       {/* Wizard Heading */}
       <div className="mb-4">
         <div className="flex items-center gap-2">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#080808]">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
             Book Your Appointment
           </h2>
-          <div className="hidden sm:inline-flex items-center justify-center w-6 h-6 rounded-lg bg-neutral-100 text-neutral-700">
+          <div className="hidden sm:inline-flex items-center justify-center w-6 h-6 rounded-lg bg-white/60 dark:bg-white/10 text-[#7657ff] dark:text-[#a99aff]">
             <CalendarIcon className="w-3.5 h-3.5" />
           </div>
         </div>
-        <p className="text-xs sm:text-[13px] text-neutral-500 mt-0.5">
+        <p className="text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 mt-0.5">
           Find the right specialist and choose your preferred time.
         </p>
       </div>
 
       {/* 1. Interactive 3-Step Wizard Header */}
-      <div className="border-b border-neutral-100 pb-4 mb-5">
+      <div className="border-b border-neutral-200/60 dark:border-white/10 pb-4 mb-5">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Step 1 Indicator */}
           <button
@@ -670,17 +670,17 @@ export default function AppointmentBookingForm({
             onClick={() => setCurrentStep(1)}
             className={`flex items-center gap-2 text-xs font-semibold tracking-wide transition-all ${
               currentStep === 1
-                ? "text-black"
-                : "text-neutral-500 hover:text-black cursor-pointer"
+                ? "text-black dark:text-white"
+                : "text-neutral-500 hover:text-black dark:hover:text-white cursor-pointer"
             }`}
           >
             <span
               className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-all ${
                 currentStep === 1
-                  ? "bg-black text-white shadow-xs"
+                  ? "bg-[#7657ff] text-white shadow-xs"
                   : currentStep > 1
-                  ? "bg-neutral-900 text-white"
-                  : "bg-neutral-100 text-neutral-500"
+                  ? "bg-neutral-900 dark:bg-white text-white dark:text-black"
+                  : "bg-neutral-100 dark:bg-white/10 text-neutral-500 dark:text-neutral-400"
               }`}
             >
               {currentStep > 1 ? "✓" : "1"}
@@ -691,7 +691,7 @@ export default function AppointmentBookingForm({
 
           <div
             className={`h-[1.5px] flex-1 transition-colors duration-300 ${
-              currentStep > 1 ? "bg-black" : "bg-neutral-200"
+              currentStep > 1 ? "bg-[#7657ff]" : "bg-neutral-200 dark:bg-white/10"
             }`}
           />
 
@@ -702,19 +702,19 @@ export default function AppointmentBookingForm({
             disabled={currentStep < 2}
             className={`flex items-center gap-2 text-xs font-semibold tracking-wide transition-all ${
               currentStep === 2
-                ? "text-black"
+                ? "text-black dark:text-white"
                 : currentStep > 2
-                ? "text-neutral-500 hover:text-black cursor-pointer"
-                : "text-neutral-300 cursor-not-allowed"
+                ? "text-neutral-500 hover:text-black dark:hover:text-white cursor-pointer"
+                : "text-neutral-300 dark:text-neutral-600 cursor-not-allowed"
             }`}
           >
             <span
               className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-all ${
                 currentStep === 2
-                  ? "bg-black text-white shadow-xs"
+                  ? "bg-[#7657ff] text-white shadow-xs"
                   : currentStep > 2
-                  ? "bg-neutral-900 text-white"
-                  : "bg-neutral-100 text-neutral-400"
+                  ? "bg-neutral-900 dark:bg-white text-white dark:text-black"
+                  : "bg-neutral-100 dark:bg-white/10 text-neutral-400"
               }`}
             >
               {currentStep > 2 ? "✓" : "2"}
@@ -725,7 +725,7 @@ export default function AppointmentBookingForm({
 
           <div
             className={`h-[1.5px] flex-1 transition-colors duration-300 ${
-              currentStep > 2 ? "bg-black" : "bg-neutral-200"
+              currentStep > 2 ? "bg-[#7657ff]" : "bg-neutral-200 dark:bg-white/10"
             }`}
           />
 
@@ -735,15 +735,15 @@ export default function AppointmentBookingForm({
             disabled={currentStep < 3}
             className={`flex items-center gap-2 text-xs font-semibold tracking-wide transition-all ${
               currentStep === 3
-                ? "text-black"
-                : "text-neutral-300 cursor-not-allowed"
+                ? "text-black dark:text-white"
+                : "text-neutral-300 dark:text-neutral-600 cursor-not-allowed"
             }`}
           >
             <span
               className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold transition-all ${
                 currentStep === 3
-                  ? "bg-black text-white shadow-xs"
-                  : "bg-neutral-100 text-neutral-400"
+                  ? "bg-[#7657ff] text-white shadow-xs"
+                  : "bg-neutral-100 dark:bg-white/10 text-neutral-400"
               }`}
             >
               3

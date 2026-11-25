@@ -41,49 +41,51 @@ export default function HealthcareGallery() {
   ];
 
   return (
-    <section className="w-full py-16 md:py-24 bg-white border-t border-neutral-100">
+    <section className="w-full py-16 md:py-24 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-12 md:mb-16">
-          <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-neutral-500 block mb-2">
+          <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7657ff] dark:text-[#a99aff] block mb-2">
             EDITORIAL PERSPECTIVE
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-[36px] font-bold tracking-tight text-[#080808]">
+          <h2 className="text-2xl sm:text-3xl md:text-[36px] font-bold tracking-tight text-neutral-900 dark:text-white">
             Care That Puts People First
           </h2>
-          <p className="text-sm text-neutral-600 mt-2.5">
+          <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2.5">
             Every clinical decision, diagnostic test, and recovery pathway is built around human empathy and medical rigor.
           </p>
         </div>
 
         {/* Asymmetric Bento-Style Editorial Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 auto-rows-[240px] md:auto-rows-[280px]">
-          {images.map((item, idx) => (
+          {images.map((item, index) => (
             <div
-              key={idx}
-              className={`group relative rounded-[26px] overflow-hidden bg-neutral-100 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.04)] ${item.className}`}
+              key={index}
+              className={`relative rounded-[26px] overflow-hidden group border border-white/80 dark:border-white/12 shadow-[0_12px_36px_-8px_rgba(15,23,42,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] dark:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.15)] bg-white/20 dark:bg-white/[0.04] backdrop-blur-xl ${item.className}`}
             >
               <Image
                 src={item.src}
                 alt={item.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
 
-              {/* Gradient Overlay for Legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+              {/* Minimal Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-              {/* Minimal Text Overlays */}
-              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white pointer-events-none">
-                <div>
-                  <span className="inline-block text-[10px] font-bold tracking-[0.16em] uppercase text-neutral-300 mb-1">
-                    {item.tag}
-                  </span>
-                  <h3 className="text-base sm:text-lg font-semibold tracking-tight text-white leading-tight">
-                    {item.caption}
-                  </h3>
-                </div>
+              {/* Tag Pill at Top */}
+              <div className="absolute top-4 left-4 z-10">
+                <span className="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-semibold tracking-wider uppercase text-white border border-white/25 shadow-xs">
+                  {item.tag}
+                </span>
+              </div>
+
+              {/* Caption at Bottom */}
+              <div className="absolute bottom-4 left-4 right-4 z-10">
+                <p className="text-white text-sm sm:text-base font-semibold tracking-tight">
+                  {item.caption}
+                </p>
               </div>
             </div>
           ))}
@@ -92,4 +94,3 @@ export default function HealthcareGallery() {
     </section>
   );
 }
-

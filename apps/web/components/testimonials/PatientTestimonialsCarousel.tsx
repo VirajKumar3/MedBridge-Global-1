@@ -256,36 +256,36 @@ export default function PatientTestimonialsCarousel() {
           </div>
 
           {/* Editorial Heading */}
-          <h2 className="text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight text-[#17151F] leading-[1.15] mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight text-neutral-900 dark:text-white leading-[1.15] mb-3">
             Real Experiences. Better Care.
           </h2>
 
           {/* Single Short Supporting Sentence */}
-          <p className="text-sm sm:text-base text-neutral-500 font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 font-normal leading-relaxed">
             Clinical excellence and compassionate care, reflected in the voices of our patients.
           </p>
         </div>
 
         {/* Header Right: Natural Statistic & Minimal Controls */}
         <div className="flex items-center gap-4 sm:gap-6 self-start lg:self-end shrink-0">
-          {/* Naturally Integrated Metric (Not a badge/pill) */}
-          <div className="hidden sm:flex items-center gap-2.5 text-xs text-neutral-500 font-medium pb-1">
-            <div className="flex items-center gap-1 font-semibold text-[#17151F]">
+          {/* Naturally Integrated Metric */}
+          <div className="hidden sm:flex items-center gap-2.5 text-xs text-neutral-500 dark:text-neutral-400 font-medium pb-1">
+            <div className="flex items-center gap-1 font-semibold text-neutral-900 dark:text-white">
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
               <span>4.9</span>
             </div>
-            <span className="text-neutral-300">•</span>
+            <span className="text-neutral-300 dark:text-neutral-600">•</span>
             <span>15,000+ verified consultations</span>
           </div>
 
-          {/* Minimal Controls Pod */}
+          {/* Minimal Frosted Controls Pod */}
           <div className="flex items-center gap-2">
             {/* Auto-scroll Pause Toggle */}
             <button
               type="button"
               onClick={() => setIsPaused((prev) => !prev)}
               aria-label={isPaused ? "Resume auto-scroll" : "Pause auto-scroll"}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-neutral-600 hover:text-[#17151F] bg-[#F8F7FC] hover:bg-neutral-100 border border-neutral-200/70 transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white bg-white/60 dark:bg-white/10 hover:bg-white dark:hover:bg-white/15 border border-white/80 dark:border-white/15 transition-all cursor-pointer shadow-2xs backdrop-blur-md"
             >
               <span
                 className={`w-1.5 h-1.5 rounded-full ${
@@ -305,13 +305,13 @@ export default function PatientTestimonialsCarousel() {
               )}
             </button>
 
-            {/* Circular Navigation Arrows */}
+            {/* Circular Frosted Navigation Arrows */}
             <div className="flex items-center gap-1.5">
               <button
                 type="button"
                 onClick={handlePrev}
                 aria-label="Previous review"
-                className="w-9 h-9 rounded-full bg-white hover:bg-[#17151F] hover:text-white border border-neutral-200/80 flex items-center justify-center text-neutral-700 transition-colors shadow-2xs cursor-pointer active:scale-95"
+                className="w-9 h-9 rounded-full bg-white/60 dark:bg-white/10 hover:bg-[#0a0a0a] hover:text-white dark:hover:bg-white dark:hover:text-black border border-white/80 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-200 transition-colors shadow-2xs cursor-pointer active:scale-95 backdrop-blur-md"
               >
                 <ChevronLeft className="w-4 h-4 stroke-[2]" />
               </button>
@@ -320,7 +320,7 @@ export default function PatientTestimonialsCarousel() {
                 type="button"
                 onClick={handleNext}
                 aria-label="Next review"
-                className="w-9 h-9 rounded-full bg-white hover:bg-[#17151F] hover:text-white border border-neutral-200/80 flex items-center justify-center text-neutral-700 transition-colors shadow-2xs cursor-pointer active:scale-95"
+                className="w-9 h-9 rounded-full bg-white/60 dark:bg-white/10 hover:bg-[#0a0a0a] hover:text-white dark:hover:bg-white dark:hover:text-black border border-white/80 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-200 transition-colors shadow-2xs cursor-pointer active:scale-95 backdrop-blur-md"
               >
                 <ChevronRight className="w-4 h-4 stroke-[2]" />
               </button>
@@ -362,12 +362,12 @@ export default function PatientTestimonialsCarousel() {
       </div>
 
       {/* 3. Minimal Bottom Pagination & Discreet Verification */}
-      <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-neutral-100">
+      <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-neutral-200/50 dark:border-white/10">
         {/* Minimal Progress Indicator */}
         <div className="flex items-center gap-3">
-          <span className="text-xs font-mono font-medium text-neutral-800 tracking-tight">
+          <span className="text-xs font-mono font-medium text-neutral-800 dark:text-neutral-200 tracking-tight">
             {String(activeIndex + 1).padStart(2, "0")}
-            <span className="text-neutral-300 mx-1.5 font-normal">/</span>
+            <span className="text-neutral-300 dark:text-neutral-600 mx-1.5 font-normal">/</span>
             {String(total).padStart(2, "0")}
           </span>
 
@@ -392,8 +392,8 @@ export default function PatientTestimonialsCarousel() {
                   }}
                   className={`transition-all duration-300 rounded-full cursor-pointer ${
                     isSelected
-                      ? "w-6 h-1.5 bg-[#17151F]"
-                      : "w-1.5 h-1.5 bg-neutral-200 hover:bg-neutral-400"
+                      ? "w-6 h-1.5 bg-[#7657ff] dark:bg-[#8b6dff]"
+                      : "w-1.5 h-1.5 bg-neutral-300 dark:bg-white/20 hover:bg-neutral-400 dark:hover:bg-white/40"
                   }`}
                 />
               );
@@ -402,8 +402,8 @@ export default function PatientTestimonialsCarousel() {
         </div>
 
         {/* Discreet Legal & Verification Notice */}
-        <div className="flex items-center gap-1.5 text-neutral-400 text-xs font-normal">
-          <ShieldCheck className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
+        <div className="flex items-center gap-1.5 text-neutral-500 dark:text-neutral-400 text-xs font-normal">
+          <ShieldCheck className="w-3.5 h-3.5 text-neutral-400 dark:text-neutral-500 shrink-0" />
           <span>Curated from verified clinical survey records. Outcomes vary per individual.</span>
         </div>
       </div>
